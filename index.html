@@ -3751,28 +3751,59 @@ animate();
 </script>
 
 <script>
-// ── SKY BAR ──
-const skyData = [
-  { symbol: '☀', text: 'SUN', pos: '28°14\' Tau' },
-  { symbol: '☽', text: 'MOON', pos: '20°38\' Gem' },
-  { symbol: '☿', text: 'MERCURY', pos: '24°52\' Tau' },
-  { symbol: '♀', text: 'VENUS', pos: '24°07\' Gem' },
-  { symbol: '♂', text: 'MARS', pos: '26°44\' Ari' },
-  { symbol: '♃', text: 'JUPITER', pos: '20°44\' Can' },
-  { symbol: '♄', text: 'SATURN', pos: '10°24\' Ari' },
-  { symbol: '♅', text: 'URANUS', pos: '1°07\' Gem' },
-  { symbol: '♆', text: 'NEPTUNE', pos: '3°54\' Ari' },
-  { symbol: '♇', text: 'PLUTO ℞', pos: '5°19\' Aqu' },
-];
-
-const bar = document.getElementById('skyBar');
-// duplicate for seamless loop
-[...skyData, ...skyData].forEach(p => {
-  const el = document.createElement('div');
-  el.className = 'sky-item';
-  el.innerHTML = `<span class="sky-item-symbol">${p.symbol}</span><span class="sky-item-text">${p.text}</span><span class="sky-item-pos">${p.pos}</span>`;
-  bar.appendChild(el);
-});
+// ── SKY BAR (self-updating) ──
+(function() {
+  const SIGN_ABB = ['Ari','Tau','Gem','Can','Leo','Vir','Lib','Sco','Sag','Cap','Aqu','Pis'];
+  function getJD()  { return Date.now() / 86400000 + 2440587.5; }
+  function calcLong(id) {
+    var T = (getJD() - 2451545.0) / 36525, L;
+    switch(id) {
+      case 'sun':     L = 280.46646 + 36000.76983 * T; break;
+      case 'moon':    L = 218.31665 + 481267.88134* T - 0.00135*T*T; break;
+      case 'mercury': L = 252.25090 + 149472.67411* T; break;
+      case 'venus':   L = 181.97980 +  58517.81560* T; break;
+      case 'mars':    L = 355.43300 +  19140.29934* T; break;
+      case 'jupiter': L =  34.35151 +   3034.90567* T; break;
+      case 'saturn':  L =  50.07744 +   1222.11382* T; break;
+      case 'uranus':  L = 314.05500 +    428.48838* T; break;
+      case 'neptune': L = 304.34866 +    218.48629* T; break;
+      case 'pluto':   L = 238.92881 +    145.20780* T; break;
+    }
+    return ((L % 360) + 360) % 360;
+  }
+  function toPos(id) {
+    var deg = calcLong(id);
+    var si  = Math.floor(deg / 30), d = deg - si * 30;
+    var dd  = Math.floor(d), mm = Math.round((d - dd) * 60);
+    if (mm === 60) { dd++; mm = 0; }
+    return dd + '°' + (mm < 10 ? '0' : '') + mm + '\' ' + SIGN_ABB[si];
+  }
+  const PLANETS = [
+    { id:'sun',     symbol:'☀', text:'SUN'      },
+    { id:'moon',    symbol:'☽', text:'MOON'     },
+    { id:'mercury', symbol:'☿', text:'MERCURY'  },
+    { id:'venus',   symbol:'♀', text:'VENUS'    },
+    { id:'mars',    symbol:'♂', text:'MARS'     },
+    { id:'jupiter', symbol:'♃', text:'JUPITER'  },
+    { id:'saturn',  symbol:'♄', text:'SATURN'   },
+    { id:'uranus',  symbol:'⛢', text:'URANUS'   },
+    { id:'neptune', symbol:'♆', text:'NEPTUNE'  },
+    { id:'pluto',   symbol:'♇', text:'PLUTO ℞'  },
+  ];
+  const bar = document.getElementById('skyBar');
+  function buildBar() {
+    bar.innerHTML = '';
+    const items = PLANETS.map(p => ({ ...p, pos: toPos(p.id) }));
+    [...items, ...items].forEach(p => {
+      const el = document.createElement('div');
+      el.className = 'sky-item';
+      el.innerHTML = `<span class="sky-item-symbol">${p.symbol}</span><span class="sky-item-text">${p.text}</span><span class="sky-item-pos">${p.pos}</span>`;
+      bar.appendChild(el);
+    });
+  }
+  buildBar();
+  setInterval(buildBar, 60000);
+})();
 
 // ── TAB SWITCHING ──
 document.querySelectorAll('.tab-btn').forEach(btn => {
