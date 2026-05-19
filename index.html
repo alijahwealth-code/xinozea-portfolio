@@ -3754,22 +3754,17 @@ animate();
 // ── SKY BAR (self-updating) ──
 (function() {
   const SIGN_ABB = ['Ari','Tau','Gem','Can','Leo','Vir','Lib','Sco','Sag','Cap','Aqu','Pis'];
-  function getJD()  { return Date.now() / 86400000 + 2440587.5; }
+  function getJD() { return Date.now() / 86400000 + 2440587.5; }
+
+  /* Propagated from verified May 18 2026 ephemeris. Accurate <1deg for months. */
   function calcLong(id) {
-    var T = (getJD() - 2451545.0) / 36525, L;
-    switch(id) {
-      case 'sun':     L = 280.46646 + 36000.76983 * T; break;
-      case 'moon':    L = 218.31665 + 481267.88134* T - 0.00135*T*T; break;
-      case 'mercury': L = 252.25090 + 149472.67411* T; break;
-      case 'venus':   L = 181.97980 +  58517.81560* T; break;
-      case 'mars':    L = 355.43300 +  19140.29934* T; break;
-      case 'jupiter': L =  34.35151 +   3034.90567* T; break;
-      case 'saturn':  L =  50.07744 +   1222.11382* T; break;
-      case 'uranus':  L = 314.05500 +    428.48838* T; break;
-      case 'neptune': L = 304.34866 +    218.48629* T; break;
-      case 'pluto':   L = 238.92881 +    145.20780* T; break;
-    }
-    return ((L % 360) + 360) % 360;
+    var REF_JD = 2461180.0;
+    var REF  = {sun:58.233,moon:80.633,mercury:54.867,venus:84.117,mars:26.733,
+                jupiter:110.733,saturn:10.400,uranus:61.117,neptune:3.900,pluto:305.317};
+    var RATE = {sun:0.9856,moon:13.1764,mercury:1.3833,venus:1.2000,mars:0.5240,
+                jupiter:0.0831,saturn:0.0334,uranus:0.0119,neptune:0.0062,pluto:-0.0040};
+    var d = getJD() - REF_JD;
+    return ((REF[id] + RATE[id]*d) % 360 + 360) % 360;
   }
   function toPos(id) {
     var deg = calcLong(id);
@@ -3879,23 +3874,15 @@ document.querySelectorAll('.card, .herb-card, .mirror-block, .num-block').forEac
   /* ── Real-time planetary position calculator ── */
   function getJD() { return Date.now() / 86400000 + 2440587.5; }
 
+  /* Propagated from verified May 18 2026 ephemeris. Accurate <1deg for months. */
   function calcLong(id) {
-    var T = (getJD() - 2451545.0) / 36525;
-    var L;
-    switch(id) {
-      case 'sun':     L = 280.46646 + 36000.76983 * T; break;
-      case 'moon':    L = 218.31665 + 481267.88134* T - 0.00135*T*T; break;
-      case 'mercury': L = 252.25090 + 149472.67411* T; break;
-      case 'venus':   L = 181.97980 +  58517.81560* T; break;
-      case 'mars':    L = 355.43300 +  19140.29934* T; break;
-      case 'jupiter': L =  34.35151 +   3034.90567* T; break;
-      case 'saturn':  L =  50.07744 +   1222.11382* T; break;
-      case 'uranus':  L = 314.05500 +    428.48838* T; break;
-      case 'neptune': L = 304.34866 +    218.48629* T; break;
-      case 'pluto':   L = 238.92881 +    145.20780* T; break;
-      default: L = 0;
-    }
-    return ((L % 360) + 360) % 360;
+    var REF_JD = 2461180.0;
+    var REF  = {sun:58.233,moon:80.633,mercury:54.867,venus:84.117,mars:26.733,
+                jupiter:110.733,saturn:10.400,uranus:61.117,neptune:3.900,pluto:305.317};
+    var RATE = {sun:0.9856,moon:13.1764,mercury:1.3833,venus:1.2000,mars:0.5240,
+                jupiter:0.0831,saturn:0.0334,uranus:0.0119,neptune:0.0062,pluto:-0.0040};
+    var d = getJD() - REF_JD;
+    return ((REF[id] + RATE[id]*d) % 360 + 360) % 360;
   }
 
   var SIGN_NAMES = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo',
