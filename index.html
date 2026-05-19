@@ -1842,7 +1842,7 @@ footer {
     <div style="position:absolute;top:24px;left:50%;transform:translateX(-50%);
                 font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.35em;
                 color:rgba(200,169,110,0.7);text-transform:uppercase;pointer-events:none;
-                text-align:center;z-index:10;">
+                text-align:center;z-index:10;" class="astro-eyebrow">
       The Sky · May 18, 2026 · Geocentric
     </div>
     <!-- Info panel -->
@@ -3825,7 +3825,7 @@ document.querySelectorAll('.card, .herb-card, .mirror-block, .num-block').forEac
 </script>
 
 <script>
-/* ── GEOCENTRIC PLANETARY SYSTEM ── */
+/* ── GEOCENTRIC PLANETARY SYSTEM (self-updating) ── */
 (function() {
   var canvas = document.getElementById('astro-canvas');
   if (!canvas || typeof THREE === 'undefined') return;
@@ -3845,258 +3845,239 @@ document.querySelectorAll('.card, .herb-card, .mirror-block, .num-block').forEac
   var worldGroup = new THREE.Group();
   scene.add(worldGroup);
 
+  /* ── Real-time planetary position calculator ── */
+  function getJD() { return Date.now() / 86400000 + 2440587.5; }
+
+  function calcLong(id) {
+    var T = (getJD() - 2451545.0) / 36525;
+    var L;
+    switch(id) {
+      case 'sun':     L = 280.46646 + 36000.76983 * T; break;
+      case 'moon':    L = 218.31665 + 481267.88134* T - 0.00135*T*T; break;
+      case 'mercury': L = 252.25090 + 149472.67411* T; break;
+      case 'venus':   L = 181.97980 +  58517.81560* T; break;
+      case 'mars':    L = 355.43300 +  19140.29934* T; break;
+      case 'jupiter': L =  34.35151 +   3034.90567* T; break;
+      case 'saturn':  L =  50.07744 +   1222.11382* T; break;
+      case 'uranus':  L = 314.05500 +    428.48838* T; break;
+      case 'neptune': L = 304.34866 +    218.48629* T; break;
+      case 'pluto':   L = 238.92881 +    145.20780* T; break;
+      default: L = 0;
+    }
+    return ((L % 360) + 360) % 360;
+  }
+
+  var SIGN_NAMES = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo',
+                    'Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
+  function longToLabel(deg) {
+    var si = Math.floor(deg / 30), d = deg - si * 30;
+    var dd = Math.floor(d), mm = Math.round((d - dd) * 60);
+    return dd + '°' + (mm < 10 ? '0' : '') + mm + '’ ' + SIGN_NAMES[si];
+  }
+  function updateEyebrow() {
+    var now = new Date();
+    var mo  = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][now.getMonth()];
+    var el  = document.querySelector('#sky-system .astro-eyebrow');
+    if (el) el.textContent = 'The Sky · ' + mo + ' ' + now.getDate() + ', ' + now.getFullYear() + ' · Geocentric';
+  }
+
   /* ── Stars ── */
-  var starGeo = new THREE.BufferGeometry();
   var starPos = [];
   for (var i = 0; i < 1800; i++) {
-    var r = 900 + Math.random() * 600;
-    var θ = Math.random() * Math.PI * 2;
-    var φ = Math.acos(2 * Math.random() - 1);
-    starPos.push(r*Math.sin(φ)*Math.cos(θ), r*Math.sin(φ)*Math.sin(θ), r*Math.cos(φ));
+    var r = 900 + Math.random()*600, th = Math.random()*Math.PI*2, ph = Math.acos(2*Math.random()-1);
+    starPos.push(r*Math.sin(ph)*Math.cos(th), r*Math.sin(ph)*Math.sin(th), r*Math.cos(ph));
   }
+  var starGeo = new THREE.BufferGeometry();
   starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
-  scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 1.1, transparent: true, opacity: 0.55 })));
+  scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({ color:0xffffff, size:1.1, transparent:true, opacity:0.55 })));
 
   /* ── Zodiac ring ── */
-  var SIGNS = [{name:'Aries',glyph:'♈'},
-  {name:'Taurus',glyph:'♉'},
-  {name:'Gemini',glyph:'♊'},
-  {name:'Cancer',glyph:'♋'},
-  {name:'Leo',glyph:'♌'},
-  {name:'Virgo',glyph:'♍'},
-  {name:'Libra',glyph:'♎'},
-  {name:'Scorpio',glyph:'♏'},
-  {name:'Sagittarius',glyph:'♐'},
-  {name:'Capricorn',glyph:'♑'},
-  {name:'Aquarius',glyph:'♒'},
-  {name:'Pisces',glyph:'♓'}];
+  var SIGNS = [{glyph:'♈'},{glyph:'♉'},{glyph:'♊'},{glyph:'♋'},{glyph:'♌'},{glyph:'♍'},
+               {glyph:'♎'},{glyph:'♏'},{glyph:'♐'},{glyph:'♑'},{glyph:'♒'},{glyph:'♓'}];
   var RING_R = 760;
-  var ringGeo = new THREE.RingGeometry(RING_R - 1, RING_R + 1, 120);
-  worldGroup.add(new THREE.Mesh(ringGeo, new THREE.MeshBasicMaterial({ color: 0xc8a96e, side: THREE.DoubleSide, transparent: true, opacity: 0.15 })));
-  /* Tick marks + sign labels */
-  var labelsDiv = document.getElementById('astro-labels');
+  var ringGeo = new THREE.RingGeometry(RING_R-1, RING_R+1, 120);
+  worldGroup.add(new THREE.Mesh(ringGeo, new THREE.MeshBasicMaterial({ color:0xc8a96e, side:THREE.DoubleSide, transparent:true, opacity:0.15 })));
   for (var s = 0; s < 12; s++) {
-    var midAngle = (s * 30 + 15) * Math.PI / 180;
-    /* Divider lines at each 30° */
-    var divAngle = s * 30 * Math.PI / 180;
-    var pts = [new THREE.Vector3(Math.cos(divAngle)*RING_R*0.94, 0, -Math.sin(divAngle)*RING_R*0.94),
-               new THREE.Vector3(Math.cos(divAngle)*RING_R*1.06, 0, -Math.sin(divAngle)*RING_R*1.06)];
-    var lineGeo = new THREE.BufferGeometry().setFromPoints(pts);
-    worldGroup.add(new THREE.Line(lineGeo, new THREE.LineBasicMaterial({ color: 0xc8a96e, transparent: true, opacity: 0.3 })));
+    var da = s * 30 * Math.PI / 180;
+    var pts = [new THREE.Vector3(Math.cos(da)*RING_R*0.94, 0, -Math.sin(da)*RING_R*0.94),
+               new THREE.Vector3(Math.cos(da)*RING_R*1.06, 0, -Math.sin(da)*RING_R*1.06)];
+    worldGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
+      new THREE.LineBasicMaterial({ color:0xc8a96e, transparent:true, opacity:0.3 })));
   }
 
-  /* ── Earth (center) ── */
-  var earthGeo = new THREE.SphereGeometry(32, 48, 48);
+  /* ── Earth ── */
   var earthMat = new THREE.ShaderMaterial({
     uniforms: { uTime: { value: 0 } },
-    vertexShader: 'varying vec3 vN; varying vec3 vP; void main(){ vN=normalize(normalMatrix*normal); vP=position; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
-    fragmentShader: 'varying vec3 vN; varying vec3 vP; void main(){ float lat=asin(vN.y/1.0); float land=sin(lat*6.0+1.5)*0.5+0.5; vec3 ocean=vec3(0.08,0.22,0.45); vec3 lnd=vec3(0.15,0.35,0.18); vec3 col=mix(ocean,lnd,smoothstep(0.38,0.62,land)); float atm=pow(1.0-abs(dot(vN,vec3(0,0,1))),2.0)*0.5; col+=vec3(0.2,0.4,0.8)*atm; gl_FragColor=vec4(col,1.0); }'
+    vertexShader: 'varying vec3 vN; void main(){ vN=normalize(normalMatrix*normal); gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+    fragmentShader: 'varying vec3 vN; void main(){ float lat=asin(clamp(vN.y,-1.0,1.0)); float land=sin(lat*6.0+1.5)*0.5+0.5; vec3 ocean=vec3(0.08,0.22,0.45); vec3 lnd=vec3(0.15,0.35,0.18); vec3 col=mix(ocean,lnd,smoothstep(0.38,0.62,land)); float atm=pow(1.0-abs(dot(vN,vec3(0,0,1))),2.0)*0.5; col+=vec3(0.2,0.4,0.8)*atm; gl_FragColor=vec4(col,1.0); }'
   });
-  var earthMesh = new THREE.Mesh(earthGeo, earthMat);
-  worldGroup.add(earthMesh);
-  /* Earth glow */
-  var eGlowGeo = new THREE.SphereGeometry(36, 32, 32);
-  var eGlowMat = new THREE.MeshBasicMaterial({ color: 0x2255aa, transparent: true, opacity: 0.12, side: THREE.BackSide });
-  worldGroup.add(new THREE.Mesh(eGlowGeo, eGlowMat));
+  worldGroup.add(new THREE.Mesh(new THREE.SphereGeometry(32,48,48), earthMat));
+  worldGroup.add(new THREE.Mesh(new THREE.SphereGeometry(36,32,32),
+    new THREE.MeshBasicMaterial({ color:0x2255aa, transparent:true, opacity:0.12, side:THREE.BackSide })));
 
-  /* ── Planet data ── */
-  var PLANETS = [{id:'moon',name:'Moon',sign:'Gemini',deg:"20°38'",zodiacDeg:80.63,orbitR:90,size:9,color:0xd4d0cc,speed:0.0005,sabian:"A labor demonstration",keyword:"collective voice",glyph:'☽',rx:false},
-  {id:'mercury',name:'Mercury',sign:'Taurus',deg:"24°52'",zodiacDeg:54.87,orbitR:145,size:7,color:0xb8a898,speed:0.0002,sabian:"A vast public park",keyword:"communal sanctuary",glyph:'☿',rx:false},
-  {id:'venus',name:'Venus',sign:'Gemini',deg:"24°07'",zodiacDeg:84.12,orbitR:195,size:11,color:0xe8d4a0,speed:0.00013,sabian:"A man trimming palms",keyword:"purposeful pruning",glyph:'♀',rx:false},
-  {id:'sun',name:'Sun',sign:'Taurus',deg:"28°14'",zodiacDeg:58.23,orbitR:255,size:38,color:0xffd060,speed:0.0001,sabian:"Two cobblers working at a table",keyword:"skilled partnership",glyph:'☀',rx:false},
-  {id:'mars',name:'Mars',sign:'Aries',deg:"26°44'",zodiacDeg:26.73,orbitR:325,size:10,color:0xcc4433,speed:5.3e-05,sabian:"Through imagination a lost opportunity is regained",keyword:"creative recovery",glyph:'♂',rx:false},
-  {id:'jupiter',name:'Jupiter',sign:'Cancer',deg:"20°44'",zodiacDeg:110.73,orbitR:400,size:21,color:0xd4936e,speed:2.4e-05,sabian:"A prima donna singing",keyword:"voice of power",glyph:'♃',rx:false},
-  {id:'saturn',name:'Saturn',sign:'Aries',deg:"10°24'",zodiacDeg:10.4,orbitR:475,size:16,color:0xe8d4a8,speed:1e-05,sabian:"The ruler of a nation",keyword:"embodied authority",glyph:'♄',rx:false},
-  {id:'uranus',name:'Uranus',sign:'Gemini',deg:"1°07'",zodiacDeg:61.12,orbitR:545,size:13,color:0x88ddcc,speed:3e-06,sabian:"Santa Claus filling stockings furtively",keyword:"secret gift-giving",glyph:'♅',rx:false},
-  {id:'neptune',name:'Neptune',sign:'Aries',deg:"3°54'",zodiacDeg:3.9,orbitR:610,size:12,color:0x4466cc,speed:2e-06,sabian:"Two lovers strolling through a secluded walk",keyword:"intimate union",glyph:'♆',rx:false},
-  {id:'pluto',name:'Pluto',sign:'Aquarius',deg:"5°19'",zodiacDeg:305.32,orbitR:670,size:7,color:0x887766,speed:1e-06,sabian:"A performer of a mystery play",keyword:"sacred enactment",glyph:'♇',rx:true}];
+  /* ── Planets ── */
+  var PLANETS = [
+    {id:'moon',    name:'Moon',    orbitR:90,  size:9,  color:0xd4d0cc, speed:0.0005,   glyph:'☽', rx:false},
+    {id:'mercury', name:'Mercury', orbitR:145, size:7,  color:0xb8a898, speed:0.0002,   glyph:'☿', rx:false},
+    {id:'venus',   name:'Venus',   orbitR:195, size:11, color:0xe8d4a0, speed:0.00013,  glyph:'♀', rx:false},
+    {id:'sun',     name:'Sun',     orbitR:255, size:38, color:0xffd060, speed:0.0001,   glyph:'☀', rx:false},
+    {id:'mars',    name:'Mars',    orbitR:325, size:10, color:0xcc4433, speed:0.000053, glyph:'♂', rx:false},
+    {id:'jupiter', name:'Jupiter', orbitR:400, size:21, color:0xd4936e, speed:0.000024, glyph:'♃', rx:false},
+    {id:'saturn',  name:'Saturn',  orbitR:475, size:16, color:0xe8d4a8, speed:0.00001,  glyph:'♄', rx:false},
+    {id:'uranus',  name:'Uranus',  orbitR:545, size:13, color:0x88ddcc, speed:0.000003, glyph:'⛢', rx:false},
+    {id:'neptune', name:'Neptune', orbitR:610, size:12, color:0x4466cc, speed:0.000002, glyph:'♆', rx:false},
+    {id:'pluto',   name:'Pluto',   orbitR:670, size:7,  color:0x887766, speed:0.000001, glyph:'♇', rx:true},
+  ];
 
   var planetMeshes = [];
-  var clock = { t: 0 };
+  var labelsDiv = document.getElementById('astro-labels');
 
   PLANETS.forEach(function(p) {
-    /* Convert zodiac degree to Three.js angle (counterclockwise from +X = 0°Aries) */
-    var initAngle = p.zodiacDeg * Math.PI / 180;
+    var initAngle = calcLong(p.id) * Math.PI / 180;
 
     /* Orbit ring */
-    var orbitGeo = new THREE.RingGeometry(p.orbitR - 0.5, p.orbitR + 0.5, 120);
-    var orbitColor = p.id === 'sun' ? 0xffd060 : p.color;
-    var orbitMat = new THREE.MeshBasicMaterial({ color: orbitColor, side: THREE.DoubleSide, transparent: true, opacity: 0.12 });
-    worldGroup.add(new THREE.Mesh(orbitGeo, orbitMat));
+    worldGroup.add(new THREE.Mesh(
+      new THREE.RingGeometry(p.orbitR-0.5, p.orbitR+0.5, 120),
+      new THREE.MeshBasicMaterial({ color: p.id==='sun'?0xffd060:p.color, side:THREE.DoubleSide, transparent:true, opacity:0.12 })
+    ));
 
-    /* Planet sphere */
-    var geo = new THREE.SphereGeometry(p.size, 32, 32);
-    var mat;
-    if (p.id === 'sun') {
-      mat = new THREE.MeshBasicMaterial({ color: p.color });
-    } else if (p.id === 'earth') {
-      mat = earthMat;
-    } else {
-      mat = new THREE.MeshPhongMaterial({ color: p.color, shininess: p.id === 'moon' ? 5 : 30, emissive: new THREE.Color(p.color).multiplyScalar(0.05) });
-    }
-    var mesh = new THREE.Mesh(geo, mat);
-    mesh.position.set(Math.cos(initAngle) * p.orbitR, 0, -Math.sin(initAngle) * p.orbitR);
-    mesh.userData = { planet: p, angle: initAngle };
+    /* Sphere */
+    var mat = p.id==='sun'
+      ? new THREE.MeshBasicMaterial({ color:p.color })
+      : new THREE.MeshPhongMaterial({ color:p.color, shininess:p.id==='moon'?5:30,
+          emissive:new THREE.Color(p.color).multiplyScalar(0.05) });
+    var mesh = new THREE.Mesh(new THREE.SphereGeometry(p.size,32,32), mat);
+    mesh.position.set(Math.cos(initAngle)*p.orbitR, 0, -Math.sin(initAngle)*p.orbitR);
+    mesh.userData = { planet:p, angle:initAngle };
     worldGroup.add(mesh);
 
-    /* Saturn rings */
-    if (p.id === 'saturn') {
-      var ringGeo2 = new THREE.RingGeometry(p.size * 1.6, p.size * 2.6, 64);
-      var ringMat2 = new THREE.MeshBasicMaterial({ color: 0xe8c878, side: THREE.DoubleSide, transparent: true, opacity: 0.55 });
-      var ringMesh = new THREE.Mesh(ringGeo2, ringMat2);
-      ringMesh.rotation.x = Math.PI * 0.42;
-      mesh.add(ringMesh);
+    if (p.id==='saturn') {
+      var rm = new THREE.Mesh(new THREE.RingGeometry(p.size*1.6,p.size*2.6,64),
+        new THREE.MeshBasicMaterial({ color:0xe8c878, side:THREE.DoubleSide, transparent:true, opacity:0.55 }));
+      rm.rotation.x = Math.PI*0.42; mesh.add(rm);
     }
-
-    /* Sun corona glow */
-    if (p.id === 'sun') {
-      var gGeo = new THREE.SphereGeometry(p.size * 1.7, 32, 32);
-      var gMat = new THREE.MeshBasicMaterial({ color: 0xffa000, transparent: true, opacity: 0.08, side: THREE.BackSide });
-      var gMesh = new THREE.Mesh(gGeo, gMat);
-      mesh.add(gMesh);
-      var g2Geo = new THREE.SphereGeometry(p.size * 2.4, 32, 32);
-      var g2Mat = new THREE.MeshBasicMaterial({ color: 0xff6600, transparent: true, opacity: 0.04, side: THREE.BackSide });
-      mesh.add(new THREE.Mesh(g2Geo, g2Mat));
+    if (p.id==='sun') {
+      mesh.add(new THREE.Mesh(new THREE.SphereGeometry(p.size*1.7,32,32),
+        new THREE.MeshBasicMaterial({ color:0xffa000, transparent:true, opacity:0.08, side:THREE.BackSide })));
+      mesh.add(new THREE.Mesh(new THREE.SphereGeometry(p.size*2.4,32,32),
+        new THREE.MeshBasicMaterial({ color:0xff6600, transparent:true, opacity:0.04, side:THREE.BackSide })));
+      mesh.add(new THREE.PointLight(0xffd060, 1.2, 800));
+      scene.add(new THREE.AmbientLight(0x334455, 0.4));
     }
-
-    /* Moon glow */
-    if (p.id === 'moon') {
-      var mGeo = new THREE.SphereGeometry(p.size * 1.5, 16, 16);
-      mesh.add(new THREE.Mesh(mGeo, new THREE.MeshBasicMaterial({ color: 0xdddddd, transparent: true, opacity: 0.06, side: THREE.BackSide })));
+    if (p.id==='moon') {
+      mesh.add(new THREE.Mesh(new THREE.SphereGeometry(p.size*1.5,16,16),
+        new THREE.MeshBasicMaterial({ color:0xdddddd, transparent:true, opacity:0.06, side:THREE.BackSide })));
     }
-
-    /* Point light for sun */
-    if (p.id === 'sun') {
-      var sunLight = new THREE.PointLight(0xffd060, 1.2, 800);
-      mesh.add(sunLight);
-    }
-
-    /* Ambient light */
-    if (p.id === 'sun') scene.add(new THREE.AmbientLight(0x334455, 0.4));
-
     planetMeshes.push(mesh);
   });
 
-  /* ── Labels (projected each frame) ── */
+  /* ── Labels ── */
   function updateLabels() {
     labelsDiv.innerHTML = '';
-    var raycaster = new THREE.Vector3();
     planetMeshes.forEach(function(mesh) {
       var p = mesh.userData.planet;
-      var wpos = new THREE.Vector3();
-      mesh.getWorldPosition(wpos);
-      /* Project */
-      var v = wpos.clone().project(camera);
-      var sx = (v.x * 0.5 + 0.5) * W;
-      var sy = (-v.y * 0.5 + 0.5) * H;
+      var wp = new THREE.Vector3(); mesh.getWorldPosition(wp);
+      var v = wp.clone().project(camera);
+      var sx = (v.x*0.5+0.5)*W, sy = (-v.y*0.5+0.5)*H;
       var el = document.createElement('div');
       el.style.cssText = 'position:absolute;pointer-events:none;text-align:center;transform:translateX(-50%);';
-      el.style.left = sx + 'px';
-      el.style.top = (sy + p.size * camera.zoom * 0.8 + 6) + 'px';
-      el.innerHTML = '<span style="font-family:Cinzel,serif;font-size:8px;letter-spacing:0.15em;color:rgba(228,221,213,0.55);text-transform:uppercase;">' + p.name + '</span>';
+      el.style.left = sx+'px'; el.style.top = (sy + p.size*camera.zoom*0.8+6)+'px';
+      el.innerHTML = '<span style="font-family:Cinzel,serif;font-size:8px;letter-spacing:0.15em;color:rgba(228,221,213,0.55);text-transform:uppercase;">'+p.name+'</span>';
       labelsDiv.appendChild(el);
     });
-    /* Zodiac sign labels */
     for (var s = 0; s < 12; s++) {
-      var midAngle = (s * 30 + 15) * Math.PI / 180;
-      var lx = Math.cos(midAngle) * (RING_R + 30);
-      var lz = -Math.sin(midAngle) * (RING_R + 30);
-      var wv = new THREE.Vector3(lx, 0, lz);
-      /* Apply worldGroup rotation */
+      var ma = (s*30+15)*Math.PI/180;
+      var wv = new THREE.Vector3(Math.cos(ma)*(RING_R+30), 0, -Math.sin(ma)*(RING_R+30));
       wv.applyMatrix4(worldGroup.matrixWorld);
       var v2 = wv.clone().project(camera);
-      var sx2 = (v2.x * 0.5 + 0.5) * W;
-      var sy2 = (-v2.y * 0.5 + 0.5) * H;
-      if (sx2 > 20 && sx2 < W - 20 && sy2 > 20 && sy2 < H - 20) {
+      var sx2=(v2.x*0.5+0.5)*W, sy2=(-v2.y*0.5+0.5)*H;
+      if (sx2>20&&sx2<W-20&&sy2>20&&sy2<H-20) {
         var sel = document.createElement('div');
-        sel.style.cssText = 'position:absolute;pointer-events:none;transform:translate(-50%,-50%);';
-        sel.style.left = sx2 + 'px'; sel.style.top = sy2 + 'px';
-        sel.innerHTML = '<span style="font-family:Cinzel,serif;font-size:8px;letter-spacing:0.1em;color:rgba(200,169,110,0.4);">' + SIGNS[s].glyph + '</span>';
+        sel.style.cssText='position:absolute;pointer-events:none;transform:translate(-50%,-50%);';
+        sel.style.left=sx2+'px'; sel.style.top=sy2+'px';
+        sel.innerHTML='<span style="font-family:Cinzel,serif;font-size:8px;letter-spacing:0.1em;color:rgba(200,169,110,0.4);">'+SIGNS[s].glyph+'</span>';
         labelsDiv.appendChild(sel);
       }
     }
   }
 
   /* ── Drag + zoom ── */
-  var drag = { active: false, lastX: 0, lastY: 0, vx: 0, vy: 0 };
-  canvas.addEventListener('mousedown', function(e) { drag.active = true; drag.lastX = e.clientX; drag.lastY = e.clientY; drag.vx = drag.vy = 0; });
-  window.addEventListener('mouseup', function() { drag.active = false; });
-  window.addEventListener('mousemove', function(e) {
-    if (!drag.active) return;
-    drag.vx = (e.clientX - drag.lastX) * 0.005;
-    drag.vy = (e.clientY - drag.lastY) * 0.005;
-    worldGroup.rotation.y += drag.vx;
-    worldGroup.rotation.x += drag.vy;
-    drag.lastX = e.clientX; drag.lastY = e.clientY;
+  var drag = { active:false, lastX:0, lastY:0, vx:0, vy:0 };
+  canvas.addEventListener('mousedown', function(e){ drag.active=true; drag.lastX=e.clientX; drag.lastY=e.clientY; drag.vx=drag.vy=0; });
+  window.addEventListener('mouseup', function(){ drag.active=false; });
+  window.addEventListener('mousemove', function(e){
+    if(!drag.active) return;
+    drag.vx=(e.clientX-drag.lastX)*0.005; drag.vy=(e.clientY-drag.lastY)*0.005;
+    worldGroup.rotation.y+=drag.vx; worldGroup.rotation.x+=drag.vy;
+    drag.lastX=e.clientX; drag.lastY=e.clientY;
   });
-  canvas.addEventListener('wheel', function(e) {
+  canvas.addEventListener('wheel', function(e){
     e.preventDefault();
-    camera.zoom = Math.max(0.3, Math.min(2.0, camera.zoom - e.deltaY * 0.001));
+    camera.zoom=Math.max(0.3,Math.min(2.0,camera.zoom-e.deltaY*0.001));
     camera.updateProjectionMatrix();
-  }, { passive: false });
-  /* Touch */
-  var t0 = null, tDist0 = null;
-  canvas.addEventListener('touchstart', function(e) {
-    if (e.touches.length === 1) { t0 = { x: e.touches[0].clientX, y: e.touches[0].clientY }; drag.vx = drag.vy = 0; }
-    if (e.touches.length === 2) { tDist0 = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY); }
-  }, { passive: true });
-  canvas.addEventListener('touchmove', function(e) {
-    if (e.touches.length === 1 && t0) {
-      drag.vx = (e.touches[0].clientX - t0.x) * 0.006;
-      drag.vy = (e.touches[0].clientY - t0.y) * 0.006;
-      worldGroup.rotation.y += drag.vx;
-      worldGroup.rotation.x += drag.vy;
-      t0 = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  },{ passive:false });
+  var t0=null, tDist0=null;
+  canvas.addEventListener('touchstart', function(e){
+    if(e.touches.length===1){ t0={x:e.touches[0].clientX,y:e.touches[0].clientY}; drag.vx=drag.vy=0; }
+    if(e.touches.length===2){ tDist0=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY); }
+  },{ passive:true });
+  canvas.addEventListener('touchmove', function(e){
+    if(e.touches.length===1&&t0){
+      drag.vx=(e.touches[0].clientX-t0.x)*0.006; drag.vy=(e.touches[0].clientY-t0.y)*0.006;
+      worldGroup.rotation.y+=drag.vx; worldGroup.rotation.x+=drag.vy;
+      t0={x:e.touches[0].clientX,y:e.touches[0].clientY};
     }
-    if (e.touches.length === 2 && tDist0) {
-      var d = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
-      camera.zoom = Math.max(0.3, Math.min(2.0, camera.zoom * (d / tDist0)));
-      camera.updateProjectionMatrix();
-      tDist0 = d;
+    if(e.touches.length===2&&tDist0){
+      var d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+      camera.zoom=Math.max(0.3,Math.min(2.0,camera.zoom*(d/tDist0)));
+      camera.updateProjectionMatrix(); tDist0=d;
     }
-  }, { passive: true });
+  },{ passive:true });
 
-  /* ── Click detection ── */
-  canvas.addEventListener('click', function(e) {
-    var rect = canvas.getBoundingClientRect();
-    var mx = e.clientX - rect.left, my = e.clientY - rect.top;
-    var closest = null, closestD = 30;
-    planetMeshes.forEach(function(mesh) {
-      var p = mesh.userData.planet;
-      var wpos = new THREE.Vector3();
-      mesh.getWorldPosition(wpos);
-      var v = wpos.clone().project(camera);
-      var sx = (v.x * 0.5 + 0.5) * W;
-      var sy = (-v.y * 0.5 + 0.5) * H;
-      var d = Math.hypot(mx - sx, my - sy);
-      var hitR = Math.max(p.size * camera.zoom + 10, 18);
-      if (d < hitR && d < closestD) { closestD = d; closest = p; }
+  /* ── Click panel ── */
+  canvas.addEventListener('click', function(e){
+    var rect=canvas.getBoundingClientRect(), mx=e.clientX-rect.left, my=e.clientY-rect.top;
+    var closest=null, closestD=30;
+    planetMeshes.forEach(function(mesh){
+      var p=mesh.userData.planet, wp=new THREE.Vector3();
+      mesh.getWorldPosition(wp);
+      var v=wp.clone().project(camera);
+      var sx=(v.x*0.5+0.5)*W, sy=(-v.y*0.5+0.5)*H;
+      var d=Math.hypot(mx-sx,my-sy), hitR=Math.max(p.size*camera.zoom+10,18);
+      if(d<hitR&&d<closestD){ closestD=d; closest=p; }
     });
-    if (closest) {
+    if(closest){
+      var lon = calcLong(closest.id);
       document.getElementById('astro-glyph').textContent = closest.glyph;
-      document.getElementById('astro-pname').textContent = closest.name + (closest.rx ? ' ℞' : '');
-      document.getElementById('astro-pos').textContent = closest.deg + ' ' + closest.sign;
-      document.getElementById('astro-sabian').textContent = '“' + closest.sabian + '”';
-      document.getElementById('astro-keyword').textContent = closest.keyword;
-      document.getElementById('astro-panel').style.display = 'block';
-      document.getElementById('astro-hint').style.display = 'none';
+      document.getElementById('astro-pname').textContent = closest.name+(closest.rx?' ℞':'');
+      document.getElementById('astro-pos').textContent   = longToLabel(lon);
+      document.getElementById('astro-panel').style.display='block';
+      document.getElementById('astro-hint').style.display='none';
     }
   });
 
-  /* ── Animation ── */
+  /* ── Sync positions to real sky every 60 seconds ── */
+  function syncPositions() {
+    planetMeshes.forEach(function(mesh) {
+      mesh.userData.angle = calcLong(mesh.userData.planet.id) * Math.PI / 180;
+    });
+    updateEyebrow();
+  }
+  setInterval(syncPositions, 60000);
+  updateEyebrow();
+
+  /* ── Animate ── */
   var t = 0;
   function animate() {
     requestAnimationFrame(animate);
     t += 0.016;
-    /* Momentum */
-    if (!drag.active) { drag.vx *= 0.95; drag.vy *= 0.95; worldGroup.rotation.y += drag.vx; worldGroup.rotation.x += drag.vy; }
-    /* Orbit planets */
-    planetMeshes.forEach(function(mesh) {
-      var p = mesh.userData.planet;
+    if(!drag.active){ drag.vx*=0.95; drag.vy*=0.95; worldGroup.rotation.y+=drag.vx; worldGroup.rotation.x+=drag.vy; }
+    planetMeshes.forEach(function(mesh){
+      var p=mesh.userData.planet;
       mesh.userData.angle += p.speed;
-      var a = mesh.userData.angle;
-      mesh.position.set(Math.cos(a) * p.orbitR, 0, -Math.sin(a) * p.orbitR);
-      if (p.id === 'sun') earthMat.uniforms.uTime.value = t;
+      var a=mesh.userData.angle;
+      mesh.position.set(Math.cos(a)*p.orbitR, 0, -Math.sin(a)*p.orbitR);
+      if(p.id==='sun') earthMat.uniforms.uTime.value=t;
     });
     worldGroup.updateMatrixWorld(true);
     updateLabels();
@@ -4105,13 +4086,13 @@ document.querySelectorAll('.card, .herb-card, .mirror-block, .num-block').forEac
   animate();
 
   /* ── Resize ── */
-  window.addEventListener('resize', function() {
-    W = container.offsetWidth; H = container.offsetHeight;
-    renderer.setSize(W, H);
-    camera.left = -W/2; camera.right = W/2; camera.top = H/2; camera.bottom = -H/2;
+  window.addEventListener('resize', function(){
+    W=container.offsetWidth; H=container.offsetHeight;
+    renderer.setSize(W,H);
+    camera.left=-W/2; camera.right=W/2; camera.top=H/2; camera.bottom=-H/2;
     camera.updateProjectionMatrix();
   });
+
 })();
 </script>
 </body>
-</html>
