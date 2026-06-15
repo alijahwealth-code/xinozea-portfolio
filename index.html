@@ -1764,6 +1764,7 @@ footer {
   .star { animation: none; opacity: 0.4; }
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/astronomy-engine@2.1.19/astronomy.min.js"></script>
 </head>
 <body>
 
@@ -2039,11 +2040,9 @@ footer {
 <!-- WEEKLY READING -->
 <section id="weekly" class="section-block">
   <div class="container">
-    <p class="section-eyebrow">Week of May 18–25, 2026</p>
-    <h2 class="section-title">The Tongue of the World</h2>
-    <p style="font-family:'IM Fell English',serif;font-style:italic;font-size:18px;color:var(--text-dim);max-width:640px;margin-bottom:0;line-height:1.7;">
-      "When the Tower Falls, the Star Remains"
-    </p>
+    <p class="section-eyebrow" id="wk-eyebrow">Loading week...</p>
+    <h2 class="section-title" id="wk-title">—</h2>
+    <p style="font-family:'IM Fell English',serif;font-style:italic;font-size:18px;color:var(--text-dim);max-width:640px;margin-bottom:0;line-height:1.7;" id="wk-subtitle"></p>
     <div class="section-rule"></div>
 
     <!-- Tab Navigation -->
@@ -2061,611 +2060,74 @@ footer {
       <button class="tab-btn" data-tab="decans">XI. Decans</button>
     </div>
 
-    <!-- I. SKY -->
+    <!-- I. SKY — populated by JS -->
     <div class="reading-panel active" id="panel-sky">
-      <div class="card-grid">
-        <div class="card">
-          <span class="card-symbol">☀</span>
-          <p class="card-label">Sun · Taurus II</p>
-          <h3 class="card-title">28°14' Taurus</h3>
-          <p class="card-body">Sabian: A New Continent Rising Out of the Ocean. The surge of new potentiality from the depth of the unconscious. Decan: Moon in Taurus (Chaldean) · 6 of Pentacles.</p>
-          <span class="card-tag tag-gold">Fixed Earth</span>
-          <span class="card-tag tag-sage">Venus-ruled</span>
-        </div>
-        <div class="card">
-          <span class="card-symbol">☽</span>
-          <p class="card-label">Moon · Aquarius II · Last Quarter</p>
-          <h3 class="card-title">20°38' Gemini</h3>
-          <p class="card-body">Sabian: Man Tête-à-Tête with His Inspiration. Enters Last Quarter 5:10 PM. The private conversation between self and spirit. Decan: Mercury in Aquarius · 6 of Swords.</p>
-          <span class="card-tag tag-silver">Fixed Air</span>
-          <span class="card-tag tag-indigo">Saturn-ruled</span>
-        </div>
-        <div class="card">
-          <span class="card-symbol">☿</span>
-          <p class="card-label">Mercury · Taurus II</p>
-          <h3 class="card-title">12°18' Taurus</h3>
-          <p class="card-body">Stellium with Sun. Cazimi-adjacent — mind fused with life-force. Deliberate, weighty, embodied speech. Decan: Moon in Taurus · 6 of Pentacles.</p>
-          <span class="card-tag tag-gold">Applying Sun ☌</span>
-        </div>
-        <div class="card">
-          <span class="card-symbol">♀</span>
-          <p class="card-label">Venus · Gemini</p>
-          <h3 class="card-title">18°14' Gemini</h3>
-          <p class="card-body">Moving toward Jupiter conjunction June 9 — one of the most celebrated aspects of this season. Applying sextile to Jupiter in Cancer. The sweetness building.</p>
-          <span class="card-tag tag-amber">Applying ✶ Jupiter</span>
-        </div>
-        <div class="card">
-          <span class="card-symbol">♂</span>
-          <p class="card-label">Mars · Aries III · Domicile</p>
-          <h3 class="card-title">22°39' Aries</h3>
-          <p class="card-body">In domicile — maximum force, maximum expression. Sabian: A Pregnant Woman in Light Summer Dress. Decan: Jupiter in Aries · 4 of Wands. Wide square to Pluto.</p>
-          <span class="card-tag tag-amber">Domicile</span>
-          <span class="card-tag tag-amber">□ Pluto</span>
-        </div>
-        <div class="card">
-          <span class="card-symbol">♃</span>
-          <p class="card-label">Jupiter · Cancer · Exalted</p>
-          <h3 class="card-title">20°07' Cancer</h3>
-          <p class="card-body">Exalted through June 2026. The great benefic at maximum generosity — expanding the home, the family, the emotional body, the sense of belonging. Trine Saturn building.</p>
-          <span class="card-tag tag-gold">Exaltation</span>
-        </div>
-        <div class="card">
-          <span class="card-symbol">♄</span>
-          <p class="card-label">Saturn · Aries II</p>
-          <h3 class="card-title">10°03' Aries</h3>
-          <p class="card-body">Conjunct Neptune by degree. Decan: Sun in Aries · 3 of Wands. The structure built on myth meeting the reality principle. Ongoing since May 2025.</p>
-          <span class="card-tag tag-amber">☌ Neptune</span>
-        </div>
-        <div class="card">
-          <span class="card-symbol">♅</span>
-          <p class="card-label">Uranus · Gemini I · New Ingress</p>
-          <h3 class="card-title">0°44' Gemini</h3>
-          <p class="card-body">Newly entered Gemini after 7 years in Taurus. The disruption of communication systems begins. Last in Gemini: 1941–1948. Decan: Jupiter in Gemini · 8 of Swords.</p>
-          <span class="card-tag tag-indigo">New Ingress</span>
-        </div>
-        <div class="card">
-          <span class="card-symbol">♆</span>
-          <p class="card-label">Neptune · Aries I</p>
-          <h3 class="card-title">3°30' Aries</h3>
-          <p class="card-body">Conjunct Saturn. The collective dream in the decan of pure force. Decan: Mars in Aries (double-ruled) · 2 of Wands — Dominion. The vision at the beginning of itself.</p>
-          <span class="card-tag tag-indigo">☌ Saturn</span>
-        </div>
-        <div class="card">
-          <span class="card-symbol">♇</span>
-          <p class="card-label">Pluto · Aquarius · Retrograde</p>
-          <h3 class="card-title">5°30' Aquarius ℞</h3>
-          <p class="card-body">Stationed retrograde May 6. The interior revolution begins. Systemic transformation being metabolized at the root level of collective consciousness.</p>
-          <span class="card-tag tag-indigo">Retrograde</span>
+      <div class="card-grid" id="sky-cards">
+        <div class="card" style="grid-column:1/-1;text-align:center;padding:48px;">
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--text-dim);">Reading the sky...</span>
         </div>
       </div>
     </div>
 
-    <!-- II. DAILY ASPECTS -->
+    <!-- II. DAILY ASPECTS — populated by JS -->
     <div class="reading-panel" id="panel-aspects">
-      <div class="aspect-list">
-
-        <div class="aspect-day" id="day-may9">
-          <div class="aspect-day-header" onclick="toggleDay('day-may9')">
-            <span class="aspect-day-num">9</span>
-            <div>
-              <div class="aspect-day-name">Monday, May 18</div>
-              <div style="font-size:12px;color:var(--text-muted);font-family:'IM Fell English',serif;font-style:italic;">Last Quarter Moon enters 5:10 PM · Victory Day</div>
-            </div>
-            <span class="aspect-day-preview">Moon □ Sun · Pluto ℞ stations</span>
-            <span class="aspect-day-chevron">▾</span>
-          </div>
-          <div class="aspect-day-body">
-            <div class="aspect-item">
-              <span class="aspect-glyph">☽□☀</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Moon in Aquarius Square Sun in Taurus · Last Quarter (exact 5:10 PM EDT)</div>
-                <div class="aspect-meaning">The characteristic Last Quarter tension — what decision have you been avoiding? The lunar phase demands a clearing before the First Quarter on May 23. Aquarius detachment meets Taurus rootedness. Choose deliberately.</div>
-              </div>
-            </div>
-            <div class="aspect-item">
-              <span class="aspect-glyph">♇℞</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Pluto Retrograde · Active (stationed May 6)</div>
-                <div class="aspect-meaning">The interior revolution is in full effect. Collective transformation moving inward. The political theater of the day (Victory Day, ceasefire) has its mirror in the psyche. What power structure are you examining within yourself?</div>
-              </div>
-            </div>
-            <div class="aspect-item">
-              <span class="aspect-glyph">☽□♅</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Moon in Aquarius Wide Square Uranus at 0° Gemini</div>
-                <div class="aspect-meaning">Old patterns of collective thinking meeting the disruption of new communication systems. Unsettling but generative. The future breaking into the present.</div>
-              </div>
-            </div>
-            <div class="aspect-item">
-              <span class="aspect-glyph">☀☌☿</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Sun conjunct Mercury in Taurus (applying, tightest orb this week)</div>
-                <div class="aspect-meaning">Cazimi-adjacent conditions. The mind and the life-force in direct communion. Words spoken today carry unusual weight and clarity. Write, record, transmit.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="aspect-day" id="day-may10">
-          <div class="aspect-day-header" onclick="toggleDay('day-may10')">
-            <span class="aspect-day-num">10</span>
-            <div>
-              <div class="aspect-day-name">Sunday, May 10</div>
-              <div style="font-size:12px;color:var(--text-muted);font-family:'IM Fell English',serif;font-style:italic;">Moon moves through late Aquarius</div>
-            </div>
-            <span class="aspect-day-preview">♀ ✶ ♃ · Abundance</span>
-            <span class="aspect-day-chevron">▾</span>
-          </div>
-          <div class="aspect-day-body">
-            <div class="aspect-item">
-              <span class="aspect-glyph">♀✶♃</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Venus in Gemini Sextile Jupiter in Cancer (applying)</div>
-                <div class="aspect-meaning">One of the softest, most generous aspects of the week. The planet of love in harmonious conversation with the great benefic in exaltation. A sextile requires engagement to activate — consciously work with this energy. Create something. Feed someone. Connect with beauty. The Venus-Jupiter conjunction of June 9 is building.</div>
-              </div>
-            </div>
-            <div class="aspect-item">
-              <span class="aspect-glyph">☽→♓</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Moon approaching Pisces ingress (later today / overnight)</div>
-                <div class="aspect-meaning">The shift from Aquarius (air, detachment) to Pisces (water, dissolution) is palpable. Boundaries become permeable. Dreams deepen. Rest is productive.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="aspect-day" id="day-may11">
-          <div class="aspect-day-header" onclick="toggleDay('day-may11')">
-            <span class="aspect-day-num">11</span>
-            <div>
-              <div class="aspect-day-name">Monday, May 11</div>
-              <div style="font-size:12px;color:var(--text-muted);font-family:'IM Fell English',serif;font-style:italic;">Moon in Pisces · Ceasefire ends</div>
-            </div>
-            <span class="aspect-day-preview">♂ □ ♇ building · Moon in ♓</span>
-            <span class="aspect-day-chevron">▾</span>
-          </div>
-          <div class="aspect-day-body">
-            <div class="aspect-item">
-              <span class="aspect-glyph">☽∈♓</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Moon enters Pisces</div>
-                <div class="aspect-meaning">Dissolution of edges. Emotions real but analyzed. Feelings transmuting into understanding. Creative work and deep rest both supported. Dreams carry information — record them.</div>
-              </div>
-            </div>
-            <div class="aspect-item">
-              <span class="aspect-glyph">♂□♇</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Mars in Aries Square Pluto in Aquarius (wide orb, building all week)</div>
-                <div class="aspect-meaning">Power struggles. The individual will meeting systemic force. Where are you in a confrontation that requires courage rather than avoidance? The Gemini season threshold approaches. The world reflects the sky: Mars does not easily stop.</div>
-              </div>
-            </div>
-            <div class="aspect-item">
-              <span class="aspect-glyph">☿→</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Mercury separating from Sun conjunction — gaining independent speed</div>
-                <div class="aspect-meaning">Thoughts that were fused with identity are now becoming speakable, transmittable. The message is ready to leave the mind and enter the world.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="aspect-day" id="day-may12">
-          <div class="aspect-day-header" onclick="toggleDay('day-may12')">
-            <span class="aspect-day-num">12</span>
-            <div>
-              <div class="aspect-day-name">Tuesday, May 12</div>
-              <div style="font-size:12px;color:var(--text-muted);font-family:'IM Fell English',serif;font-style:italic;">Moon conjunct Saturn in Pisces</div>
-            </div>
-            <span class="aspect-day-preview">☽ ☌ ♄ · ☀ ✶ ♆</span>
-            <span class="aspect-day-chevron">▾</span>
-          </div>
-          <div class="aspect-day-body">
-            <div class="aspect-item">
-              <span class="aspect-glyph">☽☌♄</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Moon in Pisces Conjunct Saturn — clarifying transit</div>
-                <div class="aspect-meaning">Sobering but clarifying. Saturn demands structure even in dissolution. What are the real boundaries in your emotional life? Not walls built from fear — containers that allow depth without destruction. Moon-Saturn conjunctions feel heavy. They are also honest.</div>
-              </div>
-            </div>
-            <div class="aspect-item">
-              <span class="aspect-glyph">☀✶♆</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Sun at 21° Taurus Sextile Neptune at 3° Aries (applying)</div>
-                <div class="aspect-meaning">Quietly mystical. Creative inspiration, spiritual sensitivity, the sense that something larger is moving through ordinary events. In Taurus and Aries: an earthy, initiating quality. A vision you can actually plant.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="aspect-day" id="day-may13">
-          <div class="aspect-day-header" onclick="toggleDay('day-may13')">
-            <span class="aspect-day-num">13</span>
-            <div>
-              <div class="aspect-day-name">Wednesday, May 13</div>
-              <div style="font-size:12px;color:var(--text-muted);font-family:'IM Fell English',serif;font-style:italic;">Best day to record · Mercury sextile Neptune exact</div>
-            </div>
-            <span class="aspect-day-preview">☿ ✶ ♆ exact · Record today</span>
-            <span class="aspect-day-chevron">▾</span>
-          </div>
-          <div class="aspect-day-body">
-            <div class="aspect-item">
-              <span class="aspect-glyph">☿✶♆</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Mercury at 14° Taurus Sextile Neptune at 3° Aries (exact)</div>
-                <div class="aspect-meaning">The mind reaching toward the mystical through practical language. One of the rarest alignments for creative transmission — writing, recording, any work that bridges earthly and sacred. If you are recording voice memos, this is the day. The sextile requires you to open the door — but once open, the words flow.</div>
-              </div>
-            </div>
-            <div class="aspect-item">
-              <span class="aspect-glyph">☽→♈</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Moon approaching Aries ingress</div>
-                <div class="aspect-meaning">The dreaming of Pisces preparing to ignite in Aries. Transition energy. The quiet before the fire.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="aspect-day" id="day-may14">
-          <div class="aspect-day-header" onclick="toggleDay('day-may14')">
-            <span class="aspect-day-num">14</span>
-            <div>
-              <div class="aspect-day-name">Thursday, May 14</div>
-              <div style="font-size:12px;color:var(--text-muted);font-family:'IM Fell English',serif;font-style:italic;">Dark of the Moon · Moon enters Aries</div>
-            </div>
-            <span class="aspect-day-preview">Dark Moon · Rest · ♂□♇ near exact</span>
-            <span class="aspect-day-chevron">▾</span>
-          </div>
-          <div class="aspect-day-body">
-            <div class="aspect-item">
-              <span class="aspect-glyph">☽∈♈</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Moon enters Aries — Dark Moon begins</div>
-                <div class="aspect-meaning">The days before the New Moon when the night sky is at its darkest. The lunar energy at its most inward. Aries Moon is restless — there is an impulse to act before the cycle has formed. Resist it. The preparation is not yet complete.</div>
-              </div>
-            </div>
-            <div class="aspect-item">
-              <span class="aspect-glyph">♂□♇</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Mars Square Pluto — approaching closer orb</div>
-                <div class="aspect-meaning">The friction is real. In the political sky this corresponds with ongoing military tension as the ceasefire has ended. On the personal level: where are you in a power struggle that requires confronting rather than avoiding? The square demands action — not comfortable, not optional.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="aspect-day" id="day-may15">
-          <div class="aspect-day-header" onclick="toggleDay('day-may15')">
-            <span class="aspect-day-num">15</span>
-            <div>
-              <div class="aspect-day-name">Friday, May 15</div>
-              <div style="font-size:12px;color:var(--text-muted);font-family:'IM Fell English',serif;font-style:italic;">Final clearing before New Moon</div>
-            </div>
-            <span class="aspect-day-preview">Set your intention for tomorrow</span>
-            <span class="aspect-day-chevron">▾</span>
-          </div>
-          <div class="aspect-day-body">
-            <div class="aspect-item">
-              <span class="aspect-glyph">☽♈</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Moon in Aries — last full day before New Moon</div>
-                <div class="aspect-meaning">One more day of preparation. What seed are you planting tomorrow? Get specific. The New Moon in Taurus arrives at 4:01 PM EDT tomorrow. Taurus New Moons respond to specificity about material, physical, sensory reality. Write the intention now.</div>
-              </div>
-            </div>
-            <div class="aspect-item">
-              <span class="aspect-glyph">♀→♋</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Venus approaching Cancer ingress (May 18) · building toward Jupiter conjunction June 9</div>
-                <div class="aspect-meaning">The sweetness building in the air is real. Even in a week of friction and intensity, Venus-Jupiter is in the background — the promise of what opens after the clearing.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="aspect-day" id="day-may16">
-          <div class="aspect-day-header" onclick="toggleDay('day-may16')">
-            <span class="aspect-day-num">16</span>
-            <div>
-              <div class="aspect-day-name">Saturday, May 23 — First Quarter Moon</div>
-              <div style="font-size:12px;color:var(--text-muted);font-family:'IM Fell English',serif;font-style:italic;">New Moon in Taurus · 4:01 PM EDT · Master Number 22</div>
-            </div>
-            <span class="aspect-day-preview">🌑 New Moon · Plant today</span>
-            <span class="aspect-day-chevron">▾</span>
-          </div>
-          <div class="aspect-day-body">
-            <div class="aspect-item">
-              <span class="aspect-glyph">🌑</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">New Moon at 16°–17° Taurus · exact 4:01 PM EDT</div>
-                <div class="aspect-meaning">The planting day. Master Number 22 — the Master Builder — is active (see Numerology section). New Moons in Taurus are among the most grounded and fertile of the year. Plant intentions about security, creative work, the body, resources, what you are building to last. Ritual is appropriate: candle, earth, seed, spoken word.</div>
-              </div>
-            </div>
-            <div class="aspect-item">
-              <span class="aspect-glyph">♂→♉</span>
-              <div class="aspect-detail">
-                <div class="aspect-planets">Mars entering Taurus (May 18, two days away)</div>
-                <div class="aspect-meaning">The sprint energy of Aries giving way to the long march of Taurus. What begins at this New Moon will be worked with patient, determined, grounded effort. Mars in Taurus does not move fast. It moves without stopping.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <div class="aspect-list" id="aspect-list">
+        <div style="padding:48px;text-align:center;font-family:'IM Fell English',serif;font-style:italic;color:var(--text-dim);">Loading aspects...</div>
       </div>
     </div>
 
-    <!-- III. MAJOR ASPECTS (free preview) + paywall -->
+    <!-- III. MAJOR ASPECTS — populated by JS -->
     <div class="reading-panel" id="panel-major">
-      <div class="card-grid">
-        <div class="card">
-          <span class="card-symbol">☌</span>
-          <p class="card-label">Conjunction · 0°</p>
-          <h3 class="card-title">Sun ☌ Mercury · Taurus</h3>
-          <p class="card-body">Cazimi-adjacent. The mind fused with the life-force. Mercury within 7° of the Sun's heart receives solar illumination — thoughts clarified by consciousness itself. Deliberate, weighty, embodied speech this week.</p>
-          <span class="card-tag tag-gold">Applying</span>
-        </div>
-        <div class="card">
-          <span class="card-symbol">☌</span>
-          <p class="card-label">Conjunction · 0° · Ongoing 2025–2026</p>
-          <h3 class="card-title">Saturn ☌ Neptune · Aries</h3>
-          <p class="card-body">The defining configuration of 2026. Structure meeting dissolution. The myth of strength tested by material reality. Exact at 0° Aries on Feb 20, 2026. The last time: 1989 — the year the Berlin Wall fell.</p>
-          <span class="card-tag tag-amber">Generational</span>
-        </div>
-      </div>
-      <!-- Paywall -->
-      <div class="paywall-overlay" id="subscribe">
-        <div class="paywall-box">
-          <span class="paywall-symbol">✦</span>
-          <h3 class="paywall-title">Complete the Reading</h3>
-          <p class="paywall-sub">The Mars-Pluto square, the Jupiter-Saturn trine, the Uranus-Neptune sextile — and their full historical, political, and personal interpretations — are available to subscribers.</p>
-          <div class="paywall-price"><span>$</span>6<span style="font-size:24px;vertical-align:baseline;">.99</span></div>
-          <p class="paywall-period">per month · cancel anytime</p>
-          <ul class="paywall-features">
-            <li>Full weekly reading — all XII sections</li>
-            <li>Daily aspect breakdowns with exact times</li>
-            <li>Complete decan reference (all 36) with Picatrix images</li>
-            <li>5 herbal allies with sourced medicine notes each week</li>
-            <li>Color symbolism from Agrippa, Picatrix & African traditions</li>
-            <li>Political mirror with verified news and historical parallels</li>
-            <li>Sacred calendar — global observances & ancient festivals</li>
-            <li>Voice memo recordings — Xinozea's voice, weekly</li>
-            <li>Numerology & tarot spread for each week</li>
-            <li>Moon phase tracker & New Moon ritual guidance</li>
-          </ul>
-          <a href="#" class="btn-primary" style="display:block;text-align:center;margin-bottom:12px;">Begin — 7 Days Free</a>
-          <p class="paywall-trial">No card required for trial · $6.99/month after</p>
-        </div>
+      <div id="major-aspects-content">
+        <div style="padding:48px;text-align:center;font-family:'IM Fell English',serif;font-style:italic;color:var(--text-dim);">Loading major aspects...</div>
       </div>
     </div>
 
-    <!-- IV–XI panels (locked preview) -->
+    <!-- IV–XI: editorial panels from week.json -->
     <div class="reading-panel" id="panel-calendar">
-      <div style="text-align:center;padding:60px 0;">
-        <p style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.25em;color:var(--gold-dim);margin-bottom:20px;">IV. THE SACRED CALENDAR</p>
-        <p style="font-family:'IM Fell English',serif;font-style:italic;font-size:18px;color:var(--text-dim);max-width:500px;margin:0 auto 40px;">Victory Day · Russia-Ukraine Ceasefire · Beltane Season · New Moon in Taurus · Full Flower Moon · cross-cultural festival history</p>
-        <a href="#subscribe" class="btn-primary">Unlock Full Reading</a>
+      <div class="locked-panel" id="content-calendar">
+        <div style="padding:48px;text-align:center;font-family:'IM Fell English',serif;font-style:italic;color:var(--text-dim);">Loading...</div>
       </div>
     </div>
-
     <div class="reading-panel" id="panel-political">
-      <div style="text-align:center;padding:60px 0;">
-        <p style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.25em;color:var(--amber);margin-bottom:20px;">V. THE POLITICAL MIRROR</p>
-        <p style="font-family:'IM Fell English',serif;font-style:italic;font-size:18px;color:var(--text-dim);max-width:500px;margin:0 auto 40px;">Russia/Ukraine · Iran & the Strait of Hormuz · South Asia heat crisis · Pluto retrograde & collective power — each with historical parallel and sky reading</p>
-        <a href="#subscribe" class="btn-primary">Unlock Full Reading</a>
+      <div id="content-political" style="padding:20px 0;">
+        <div style="padding:48px;text-align:center;font-family:'IM Fell English',serif;font-style:italic;color:var(--text-dim);">Loading...</div>
       </div>
     </div>
-
     <div class="reading-panel" id="panel-symbols">
-      <div style="text-align:center;padding:60px 0;">
-        <p style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.25em;color:var(--gold-dim);margin-bottom:20px;">VI. SYMBOLS</p>
-        <p style="font-family:'IM Fell English',serif;font-style:italic;font-size:18px;color:var(--text-dim);max-width:500px;margin:0 auto 40px;">The Bull · The Water Bearer · The Tau Cross · The Ankh · The Hawthorn Blossom — with Egyptian, Celtic, Yoruba, and Hermetic sourcing</p>
-        <a href="#subscribe" class="btn-primary">Unlock Full Reading</a>
+      <div id="content-symbols" style="padding:20px 0;">
+        <div style="padding:48px;text-align:center;font-family:'IM Fell English',serif;font-style:italic;color:var(--text-dim);">Loading...</div>
       </div>
     </div>
-
-    <!-- VII. COLORS — partial preview -->
     <div class="reading-panel" id="panel-colors">
-      <div class="color-row">
-        <div class="color-swatch" style="background:rgba(20,40,20,0.6);">
-          <div class="swatch-dot" style="background:#4a7c4a;box-shadow:0 0 12px rgba(74,124,74,0.4);"></div>
-          <span class="swatch-name" style="color:var(--sage);">Emerald Green</span>
-          <span class="swatch-assoc">Taurus · Venus · Growth</span>
-        </div>
-        <div class="color-swatch" style="background:rgba(10,20,50,0.6);">
-          <div class="swatch-dot" style="background:#4a6aaa;box-shadow:0 0 12px rgba(74,106,170,0.4);"></div>
-          <span class="swatch-name" style="color:#7a9aee;">Electric Blue</span>
-          <span class="swatch-assoc">Aquarius · Uranus · Vision</span>
-        </div>
-        <div class="color-swatch" style="background:rgba(40,10,10,0.6);">
-          <div class="swatch-dot" style="background:#9a3a3a;box-shadow:0 0 12px rgba(154,58,58,0.4);"></div>
-          <span class="swatch-name" style="color:#cc6666;">Crimson Red</span>
-          <span class="swatch-assoc">Aries · Mars · Clarity</span>
-        </div>
-        <div class="color-swatch" style="background:rgba(30,30,35,0.8);">
-          <div class="swatch-dot" style="background:#c0c8d4;box-shadow:0 0 12px rgba(192,200,212,0.4);"></div>
-          <span class="swatch-name" style="color:var(--silver);">White / Silver</span>
-          <span class="swatch-assoc">Moon · Purification · Threshold</span>
-        </div>
-        <div class="color-swatch" style="background:rgba(30,25,5,0.6);">
-          <div class="swatch-dot" style="background:#c9a84c;box-shadow:0 0 12px rgba(201,168,76,0.4);"></div>
-          <span class="swatch-name" style="color:var(--gold);">Gold</span>
-          <span class="swatch-assoc">Jupiter · Exaltation · Divine Light</span>
-        </div>
-      </div>
-      <div style="text-align:center;padding:20px 0 40px;">
-        <p style="font-size:14px;color:var(--text-muted);font-family:'IM Fell English',serif;font-style:italic;margin-bottom:20px;">Full color symbolism with Agrippa, Picatrix, Yoruba, and Egyptian sourcing — subscribers only</p>
-        <a href="#subscribe" class="btn-secondary">Unlock Full Reading</a>
+      <div id="content-colors" style="padding:20px 0;">
+        <div style="padding:48px;text-align:center;font-family:'IM Fell English',serif;font-style:italic;color:var(--text-dim);">Loading...</div>
       </div>
     </div>
-
-    <!-- VIII. HERBS — preview -->
     <div class="reading-panel" id="panel-herbs">
-      <div class="herb-grid">
-        <div class="herb-card">
-          <span class="herb-icon">🌿</span>
-          <div class="herb-name">Hawthorn</div>
-          <div class="herb-latin">Crataegus monogyna</div>
-          <div class="herb-planet">♂ Mars / ♀ Venus · Beltane threshold</div>
-          <div class="herb-desc">The heart herb. The threshold keeper. Blooming now. Strengthens the heart muscle, regulates blood pressure. The flower that smells of both life and death.</div>
-        </div>
-        <div class="herb-card">
-          <span class="herb-icon">🌙</span>
-          <div class="herb-name">Mugwort</div>
-          <div class="herb-latin">Artemisia vulgaris</div>
-          <div class="herb-planet">♀ Venus / ☽ Moon · Dream herb</div>
-          <div class="herb-desc">Used across TCM, European folk medicine, and Indigenous traditions. Promotes vivid dreaming. Place beneath pillow during the dark Moon.</div>
-        </div>
-        <div class="herb-card" style="position:relative;overflow:hidden;">
-          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,var(--surface2) 80%);z-index:2;display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px;">
-            <a href="#subscribe" class="btn-secondary" style="font-size:9px;padding:8px 16px;">Unlock 3 More Herbs</a>
-          </div>
-          <span class="herb-icon">🌱</span>
-          <div class="herb-name">Nettle</div>
-          <div class="herb-latin">Urtica dioica</div>
-          <div class="herb-planet">♂ Mars · Iron & vitality</div>
-          <div class="herb-desc">The stinging herb that also heals. Mars energy in its most constructive form — strength without inflammation.</div>
-        </div>
+      <div id="content-herbs" style="padding:20px 0;">
+        <div style="padding:48px;text-align:center;font-family:'IM Fell English',serif;font-style:italic;color:var(--text-dim);">Loading...</div>
       </div>
     </div>
-
-    <!-- IX. NUMEROLOGY -->
     <div class="reading-panel" id="panel-numerology">
-      <div class="num-display">
-        <div class="num-block">
-          <div class="num-big">6</div>
-          <div class="num-date">May 18, 2026</div>
-          <div class="num-meaning">Venus · Harmony · Love as Practice · Creative Responsibility</div>
-        </div>
-        <div class="num-block">
-          <div class="num-big" style="color:var(--silver);">8</div>
-          <div class="num-date">May 20 · Gemini Season</div>
-          <div class="num-meaning">Saturn · Infinite Loop · Power of the Mind · What Endures</div>
-        </div>
-      </div>
-      <div style="max-width:640px;">
-        <p style="font-size:16px;color:var(--text-dim);line-height:1.8;margin-bottom:20px;">We step from <strong style="color:var(--gold);">6 energy</strong> — Venus, beauty, what we love — into <strong style="color:var(--silver);">8</strong>. The infinite loop. The lemniscate. The season of the mind opens on May 20 with Saturn-frequency precision: what you think, you build.</p>
-        <p style="font-size:15px;color:var(--text-muted);line-height:1.75;font-style:italic;font-family:'IM Fell English',serif;">6 is the lover. 8 is the architect of what love builds. Gemini Season asks: what is the word for what you have been growing all spring?</p>
+      <div id="content-numerology" style="padding:20px 0;">
+        <div style="padding:48px;text-align:center;font-family:'IM Fell English',serif;font-style:italic;color:var(--text-dim);">Loading...</div>
       </div>
     </div>
-
-    <!-- X. TAROT -->
     <div class="reading-panel" id="panel-tarot">
-      <div class="tarot-spread">
-        <div class="tarot-card">
-          <span class="tarot-card-art">🗼</span>
-          <div class="tarot-card-num">XVI · Mars</div>
-          <div class="tarot-card-name">The Tower</div>
-          <div class="tarot-card-sub">Mars in Aries · The fall of what was built on false foundation</div>
-          <span class="tarot-role">Primary · Week</span>
-        </div>
-        <div class="tarot-card">
-          <span class="tarot-card-art">⭐</span>
-          <div class="tarot-card-num">XVII · Aquarius</div>
-          <div class="tarot-card-name">The Star</div>
-          <div class="tarot-card-sub">Moon in Aquarius · Hope that has survived the Tower</div>
-          <span class="tarot-role">Secondary · Resolution</span>
-        </div>
-        <div class="tarot-card">
-          <span class="tarot-card-art">🏛</span>
-          <div class="tarot-card-num">V · Taurus</div>
-          <div class="tarot-card-name">The Hierophant</div>
-          <div class="tarot-card-sub">Sun in Taurus · The keeper of sacred knowledge. Transmit.</div>
-          <span class="tarot-role">Season · Teaching</span>
-        </div>
-      </div>
-      <div style="max-width:640px;margin:40px auto 0;">
-        <p style="font-size:16px;color:var(--text-dim);line-height:1.8;margin-bottom:20px;font-family:'IM Fell English',serif;font-style:italic;">"The Tower falls. The Star remains. Pour anyway."</p>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.75;">Full interpretations — Rachel Pollack, Jodorowsky, political mirror, and personal practice guidance — available to subscribers.</p>
+      <div id="content-tarot" style="padding:20px 0;">
+        <div style="padding:48px;text-align:center;font-family:'IM Fell English',serif;font-style:italic;color:var(--text-dim);">Loading...</div>
       </div>
     </div>
-
-    <!-- XI. DECANS -->
     <div class="reading-panel" id="panel-decans">
-      <div style="margin-bottom:40px;">
-        <p style="font-size:16px;color:var(--text-dim);line-height:1.8;max-width:640px;">The 36 decans — originating in ancient Egyptian decanal star calendars, preserved through Hellenistic astrology, the Arabic Picatrix, Agrippa's Renaissance synthesis, and the Golden Dawn's tarot correspondences — are the thirty-six faces of the sky. Each 10-degree segment has its own planetary ruler, its own Picatrix image, and its own Minor Arcana card.</p>
+      <div id="decans-content">
+        <div style="padding:48px;text-align:center;font-family:'IM Fell English',serif;font-style:italic;color:var(--text-dim);">Loading...</div>
       </div>
-
-      <!-- Active this week -->
-      <p class="section-eyebrow" style="margin-bottom:20px;">Active Decans This Week</p>
-      <div class="card-grid" style="margin-bottom:40px;">
-        <div class="card" style="border-color:rgba(201,168,76,0.35);">
-          <span class="card-symbol">☀☿</span>
-          <p class="card-label">Sun & Mercury · Taurus II · 10°–19°59'</p>
-          <h3 class="card-title">Moon in Taurus (Chaldean)</h3>
-          <p class="card-body">6 of Pentacles — Success/Material Generosity. Picatrix: A Man and a Woman looking upward to the sky together. The Pleiades decan — the seven sisters visible across every human culture.</p>
-          <span class="card-tag tag-gold">6 of Pentacles</span>
-          <span class="card-tag tag-sage">Moon / Mercury sub-ruled</span>
-        </div>
-        <div class="card" style="border-color:rgba(90,90,170,0.35);">
-          <span class="card-symbol">☽</span>
-          <p class="card-label">Moon · Aquarius II · 10°–19°59'</p>
-          <h3 class="card-title">Mercury in Aquarius (Chaldean)</h3>
-          <p class="card-body">6 of Swords — Science/Transition. Picatrix: A Man with elephant's teeth. The mind that navigates from troubled waters to calm through knowledge rather than force.</p>
-          <span class="card-tag tag-silver">6 of Swords</span>
-          <span class="card-tag tag-indigo">Mercury sub-ruled</span>
-        </div>
-        <div class="card" style="border-color:rgba(212,132,58,0.35);">
-          <span class="card-symbol">♂</span>
-          <p class="card-label">Mars · Aries III · 20°–29°59'</p>
-          <h3 class="card-title">Jupiter in Aries (Chaldean)</h3>
-          <p class="card-body">4 of Wands — Completion/Celebration. Picatrix: A White Rider with golden bracelet. The warrior who has also been initiated into a larger understanding of what he fights for.</p>
-          <span class="card-tag tag-amber">4 of Wands</span>
-          <span class="card-tag tag-gold">Jupiter sub-ruled</span>
-        </div>
-        <div class="card" style="border-color:rgba(122,158,126,0.35);">
-          <span class="card-symbol">♄</span>
-          <p class="card-label">Saturn · Aries II · 10°–19°59'</p>
-          <h3 class="card-title">Sun in Aries (Chaldean)</h3>
-          <p class="card-body">3 of Wands — Established Strength. The ships have sailed. You built them. Now you watch the horizon with the steadiness of one who has done the preparation.</p>
-          <span class="card-tag tag-gold">3 of Wands</span>
-          <span class="card-tag tag-amber">Sun sub-ruled</span>
-        </div>
-        <div class="card" style="border-color:rgba(90,90,170,0.25);">
-          <span class="card-symbol">♆</span>
-          <p class="card-label">Neptune · Aries I · 0°–9°59'</p>
-          <h3 class="card-title">Mars in Aries — Double Ruled</h3>
-          <p class="card-body">2 of Wands — Dominion/Beginning of Vision. Picatrix: A dark-skinned man with red eyes, full of energy. The vision at the beginning of itself. The dream that wants to act.</p>
-          <span class="card-tag tag-amber">2 of Wands</span>
-          <span class="card-tag tag-indigo">Mars × 2</span>
-        </div>
-        <div class="card" style="border-color:rgba(90,90,170,0.2);">
-          <span class="card-symbol">♅</span>
-          <p class="card-label">Uranus · Gemini I · Newly ingressed</p>
-          <h3 class="card-title">Jupiter in Gemini (Chaldean)</h3>
-          <p class="card-body">8 of Swords — Interference/Restriction that enables clarity. The disruption of communication is just beginning. We are in the blindfold. The way exists. The Uranus-Gemini era will find it.</p>
-          <span class="card-tag tag-indigo">8 of Swords</span>
-          <span class="card-tag tag-gold">Jupiter sub-ruled</span>
-        </div>
-      </div>
-
-      <!-- This week's decan tarot spread -->
-      <p class="section-eyebrow" style="margin-bottom:24px;">This Week's Decan Tarot Spread</p>
-      <div class="tarot-spread" style="margin-bottom:40px;">
-        <div class="tarot-card">
-          <span class="tarot-card-art">🪙</span>
-          <div class="tarot-card-num">6 of Pentacles</div>
-          <div class="tarot-card-name">Sun in Taurus II</div>
-          <div class="tarot-card-sub">Material generosity · What flows between giver and receiver</div>
-          <span class="tarot-role">Sun Decan</span>
-        </div>
-        <div class="tarot-card">
-          <span class="tarot-card-art">⚔</span>
-          <div class="tarot-card-num">6 of Swords</div>
-          <div class="tarot-card-name">Moon in Aquarius II</div>
-          <div class="tarot-card-sub">Navigation toward calmer waters · Knowledge as vessel</div>
-          <span class="tarot-role">Moon Decan</span>
-        </div>
-        <div class="tarot-card">
-          <span class="tarot-card-art">🔥</span>
-          <div class="tarot-card-num">4 of Wands</div>
-          <div class="tarot-card-name">Mars in Aries III</div>
-          <div class="tarot-card-sub">Celebration of completion · The warrior who knows what he fights for</div>
-          <span class="tarot-role">Active Planet</span>
-        </div>
-      </div>
-      <p style="font-family:'IM Fell English',serif;font-style:italic;font-size:16px;color:var(--text-dim);text-align:center;">Complete what can be completed. Give what can be given. Move with knowledge toward what is next.</p>
     </div>
 
   </div>
 </section>
+
 
 <!-- MOON PHASE -->
 <section class="section-block" id="today">
@@ -4131,5 +3593,836 @@ document.querySelectorAll('.card, .herb-card, .mirror-block, .num-block').forEac
   });
 
 })();
+</script>
+
+<script>
+// ══ TAUKAMII WEEKLY ENGINE ══════════════════════════════════════════════════
+// Self-updating weekly astrology section.
+// Astronomical data: astronomy-engine (NASA, client-side)
+// Editorial layer:   /content/week.json (Xinozea updates Monday morning)
+// ═══════════════════════════════════════════════════════════════════════════
+
+(function() {
+
+// ── SABIAN SYMBOLS (all 360) ─────────────────────────────────────────────────
+// Index 0 = Aries 1°, index 29 = Aries 30°, index 30 = Taurus 1°, etc.
+const SABIANS = [
+"A Woman Has Just Risen From the Sea; A Seal Is Embracing Her",
+"A Comedian Reveals Human Nature",
+"A Cameo Profile of a Man in the Outline of His Country",
+"Two Lovers Are Walking Down a Secluded Lane",
+"A Triangularly Shaped Flight of Wild Geese",
+"A Square with One of Its Sides Brightly Illumined",
+"A Man Successfully Expressing Himself in Two Realms at Once",
+"A Woman's Hat, With Streamers Blown by the East Wind",
+"A Crystal Gazer",
+"A Teacher Gives New Symbolic Forms to Traditional Images",
+"The Ruler of a Nation",
+"A Flock of Wild Geese",
+"A Bomb Which Failed to Explode Is Now Safely Concealed",
+"A Serpent Coiling Near a Man and a Woman",
+"An Indian Weaving a Blanket",
+"Brightly Clad Brownies Dancing in the Warm Dying Light",
+"Two Prim Spinsters",
+"An Empty Hammock",
+"The Magic Carpet",
+"A Young Girl Feeding Birds in Winter",
+"A Pugilist Enters the Ring",
+"The Gate to the Garden of All Fulfilled Desires",
+"A Pregnant Woman in Light Summer Dress",
+"Abundance Which Calls for Concrete Participation",
+"A Double Promise",
+"Through Imagination a Lost Opportunity Is Regained",
+"Through Imagination a Lost Opportunity Is Regained",
+"A Large Disappointed Audience",
+"A Celestial Choir Singing",
+"A Duck Pond and Its Brood",
+// Taurus 1–30
+"A Clear Mountain Stream",
+"An Electrical Storm",
+"A Peacock Parading on an Ancient Lawn",
+"The Rainbow's Pot of Gold",
+"A Widow at an Open Grave",
+"A Bridge Being Built Across a Gorge",
+"The Woman of Samaria at the Ancestral Well",
+"A Young Couple Walk Down Main Street Window Shopping",
+"A Fully Decorated Christmas Tree",
+"A Spaniard Serenading His Senorita",
+"A Woman Sprinkling Long Rows of Flowers Before a Massive Hieroglyphic Upright",
+"An Old-Fashioned Couple Walk Down Palm-Lined Promenade",
+"A Porter Carrying Heavy Baggage",
+"Shellfish Groping and Children Playing",
+"A Man Muffled Up With a Rakish Silk Hat",
+"A New Continent Is Rising Out of the Ocean",
+"A Symbolical Battle Between Swords and Torches",
+"The Vast Public Park",
+"A New Continent Rising",
+"Wisps of Winglike Clouds Streaming Across the Sky",
+"A Moving Finger Points to Significant Passages in a Book",
+"White Dove Over Troubled Waters",
+"A Jewelry Shop",
+"A Mounted Indian With Scalp Locks",
+"Flower Petals Drift Down",
+"A Spilled Cornucopia",
+"A Mechanical Toy Runs Its Course",
+"A Woman of Samaria",
+"Two Cobblers Working at a Table",
+"A Peacock",
+// Gemini 1–30
+"A Glass-Bottomed Boat Reveals Undersea Wonders",
+"Santa Claus Filling Christmas Stockings Furtively",
+"The Garden of the Tuileries in Paris",
+"Holly and Mistletoe Bring Christmas Spirit to a Home",
+"A Publication Designed to Reach Mass Minds",
+"Drilling for Oil",
+"A Well With Bucket and Rope Under the Shade of Majestic Trees",
+"Aroused Strikers Surround a Factory",
+"A Medieval Tournament",
+"An Airplane Doing Nose Dives",
+"Newly Opened Lands Offer the Pioneer New Opportunities for Experience",
+"A Famous Pianist Giving a Concert Performance",
+"A Famous Pianist Giving a Concert Performance",
+"A Vast Tent",
+"Two Dutch Children Talking to Each Other, Exchanging Knowledge",
+"A Woman Activist in an Emotional Speech Dramatizing Her Cause",
+"The Head of a Robust Youth Changes Into That of a Mature Thinker",
+"Two Chinese Men Talking Chinese",
+"A Large Archaic Volume Reveals a Traditional Wisdom",
+"A Modern Cafeteria Displays an Abundance of Nutritious Foods",
+"A Tumultuous Labor Demonstration",
+"A Barn Dance",
+"Three Fledglings in a Nest High in a Tree",
+"Children Playing on the Beach, Their Heads Protected by Sunbonnets",
+"A Man Trimming Palms",
+"Frost-Covered Trees Against Wintry Skies",
+"A Gypsy Emerging from the Forest Wherein Her Tribe Is Encamped",
+"Society Granting Bankruptcy to Him, a Man Leaves the Court",
+"The First Mocking Bird of Spring",
+"A Parade of Bathing Beauties Before Large Beach Crowds",
+// Cancer 1–30
+"On a Ship the Sailors Lower an Old Flag and Raise a New One",
+"A Man on a Magic Carpet Observes a Vast Unfolding Below Him",
+"An Individual Bankruptcy — New Potentialities",
+"A Cat Arguing with a Mouse",
+"An Automobile Wrecked by a Train",
+"Game Birds Feathering Their Nests",
+"Two Fairies on a Moonlit Night",
+"A Merry-Go-Round",
+"A Tiny Nude Miss Reaching into the Water for a Fish",
+"A Large Diamond in the First Stages of the Cutting Process",
+"A Clown Caricaturing Well-Known Personalities",
+"A Chinese Woman Nursing a Baby Whose Aura Reveals Him to Be the Reincarnation of a Great Teacher",
+"One Hand Slightly Flexed With a Very Prominent Thumb",
+"A Very Old Man Facing a Vast Dark Space on the North Side",
+"In a Sumptuous Harem a Blonde Yeoman Stands in Shackles",
+"A Man Studying a Square and Compasses with Shrewdness",
+"The Germ Grows Into Knowledge and Life",
+"A Well Disposed Individual Seeking to Bring Back to Usual Levels the Person Disturbed",
+"A Priest Performing a Difficult Funtion",
+"Gondoliers in a Serenade",
+"A Prima Donna Singing",
+"A Young Woman Awaiting a Sailboat",
+"The Meeting of a Literary Society",
+"A Woman and Two Men on a Bit of Sunlit Land Facing South",
+"A Will-o-the-Wisp",
+"Contentment and Happiness in Luxury, People Riding Serenely",
+"A Violent Storm in a Canyon Filled With Expensive Homes",
+"Through Bankruptcy, Society Gives to an Overburdened Individual a Way Out",
+"A Muse Weighing Twins",
+"A Daughter of the American Revolution",
+// Leo 1–30
+"Blood Rushes to a Man's Head as His Vital Energies Are Mobilized",
+"An Epidemic of Mumps",
+"A Middle-Aged Woman, Her Long Hair Flowing Over Her Shoulders",
+"A Formally Dressed Elderly Man Stands Near Trophies He Brought Back From a Hunting Expedition",
+"Rock Formations at the Edge of a Precipice",
+"A Conservative, Elderly Gentleman is Introduced to a Lodge of Carefree Individuals",
+"The Constellations of Stars Shine Brilliantly in the Night Sky",
+"An Bolshevist Propagandist Speaks to a Street Meeting",
+"Glass Blowers Shape Beautiful Vases With Their Controlled Breathing",
+"Early Morning Dew Sparkles as Sunlight Floods the Field",
+"Children Play on a Swing Hanging From the Branches of a Huge Oak Tree",
+"An Evening Party of Adults on a Lawn, Fireflies Mingle with the Lights of the Lamps",
+"An Old Sea Captain Rocking on the Porch of His Cottage",
+"The Human Soul Awaiting Opportunity for Expression",
+"A Pageant, With Its Spectacular Floats, Moves Along a Street Crowded With People",
+"The Storm Ended, All Nature Rejoices in Brilliant Sunshine",
+"A Volunteer Church Choir Makes Ecstatic Music",
+"A Teacher of Mathematics",
+"A Houseboat Party",
+"The Zuni Sun Worshippers",
+"Intoxicated Chickens Dizzily Flap Their Wings Trying to Fly",
+"A Party Entering a Large Canoe for a Short Junket",
+"In a Circus the Bareback Rider Displays Her Dangerous Skill",
+"Totally Focused Upon Inner Spiritual Attainment, a Man Is Sitting in a State of Complete Neglect of Bodily Appearance",
+"A Large Camel Is Seen Crossing a Vast and Forbidding Desert",
+"After the Heavy Storm a Rainbow",
+"Daybreak",
+"Many Little Birds on a Limb of a Big Tree",
+"A Mermaid",
+"An Unsealed Letter",
+// Virgo 1–30
+"In a Portrait, the Significant Features of a Man's Head Are Artistically Emphasized",
+"A Large White Cross Dominates the Landscape",
+"Two Angels Bring Enlightenment",
+"Black and White Children Playing Together Happily",
+"A Man Becoming Aware of Nature Spirits and Beings",
+"A Merry-Go-Round",
+"A Harem",
+"First Dancing Instruction",
+"An Expressionist Painter Making a Futuristic Drawing",
+"Two Heads Looking Out and Beyond the Shadows",
+"A Boy Moulded in His Mother's Aspirations for Him",
+"After a Solar Eclipse, the Sun Shines Brilliantly",
+"A Powerful Statesman Overcomes a State of Political Hysteria",
+"A Family Tree",
+"A Fine Lace Handkerchief, Heirloom From Valorous Ancestors",
+"In the Zoo Children Are Brought Face to Face With Rare Specimens of Animal Life",
+"A Volcanic Eruption",
+"A Ouija Board",
+"A Swimming Race",
+"An Automobile Caravan",
+"A Girls' Basketball Team",
+"A Royal Coat of Arms Enriched With Precious Stones",
+"A Lion Tamer Rushes Fearlessly Into the Circus Arena",
+"Mary and Her White Lamb",
+"A Flag at Half Mast in Front of a Public Building",
+"A Boy With a Censer Serves Near the Priest at the Altar",
+"Aristocratic Elderly Ladies Drinking Tea in a Wealthy Home",
+"A Bald-Headed Man Has Seized Power",
+"A Seeker After Occult Knowledge Is Reading an Ancient Scroll",
+"A Totally Artificial Landscape",
+// Libra 1–30
+"A Butterfly Made Perfect by a Dart Through It",
+"The Light of the Sixth Race Transmuted to the Seventh",
+"The Dawn of a New Day Reveals Everything Changed",
+"A Group of Young People Sit in Spiritual Communion Around a Campfire",
+"A Man Teaching the True Inner Knowledge of the New World to His Students",
+"A Man Watches His Ideals Taking a Concrete Form Before His Inner Vision",
+"A Woman Feeding Chickens and Protecting Them From the Hawks",
+"A Blazing Fireplace in a Deserted Home",
+"Three Old Masters Hanging on the Wall of a Special Room",
+"A Canoe Approaching Safety Through Dangerous Waters",
+"A Professor Peering Over His Glasses at His Students",
+"Miners Are Surfacing from a Deep Coal Mine",
+"Children Blowing Soap Bubbles",
+"A Noon Siesta",
+"Circular Paths",
+"A Boat Landing Washed Away",
+"A Retired Sea Captain Watches Ships Entering and Leaving the Harbor",
+"Two Men Placed Under Arrest Are Brought Before the Tribunal of Society",
+"A Parrot Listening and Talking, Repeating the Conversation He Overheard",
+"The Jewish Shawl is Wrapped Around the Shoulders of the Concerned Individual",
+"A Soldier Derelict in His Duty",
+"A Child Giving Birds a Drink at a Fountain",
+"Chanticleer's Voice Heralds the Dawn",
+"A Butterfly with the Right Wing More Perfectly Formed",
+"The Sight of an Autumn Leaf Brings to a Pilgrim the Sudden Revelation of the Mystery of Life and Death",
+"An Eagle and a Large White Dove Change into Each Other",
+"An Airplane Sails High in the Clear Sky",
+"A Man in the Midst of Brightening Influences",
+"Mankind's Vast and Enduring Effort to Reach for Knowledge Transferable to Achievement",
+"Three Mounds of Knowledge on a Philosopher's Head",
+// Scorpio 1–30
+"A Sight-Seeing Bus",
+"A Delicate Bottle of Perfume Lies Broken, Releasing Its Fragrance",
+"A House-Raising Party in a Small Village Enlists the Neighbors' Cooperation",
+"A Youth Carrying a Lighted Candle",
+"A Massive, Unchanging Rock Stands in the Midst of Many Lesser Rocks",
+"The Gold Rush Tears Men Away From Their Native Soil",
+"Driftwood Drifting Along the Shoreline",
+"The Moon Shining Across a Lake",
+"Dental Work Illumined by a Bright Searchlight",
+"A Fellowship Supper Reunites Old Comrades",
+"A Drowning Man Is Being Rescued",
+"An Embassy Ball",
+"An Ancient Sarcophagus of Great Historical Significance is Carefully Transported",
+"Telephone Linemen at Work Installing New Connections",
+"Children Playing Around Five Mounds of Sand",
+"A Girl's Face Breaking into a Smile",
+"A Woman the Father of Her Own Child",
+"A Quiet Path Through Woods Bright With Multicolored Leaves",
+"A Parrot Listening and Talking",
+"A Woman Drawing Two Dark Curtains Aside",
+"Obeying His Conscience, a Soldier Resists Orders",
+"Hunters Starting Out for Ducks",
+"A Rabbit Metamorphizes Into a Nature Spirit",
+"Crowds Coming Down the Mountain to Valleys Below",
+"An X Ray",
+"Indians Making Camp in New Territory",
+"A Military Band Marches Noisily Through the City",
+"The Harvest Moon Illuminates a Clear Autumnal Sky",
+"An Indian Squaw Pleading to the Chief for the Lives of Her Children",
+"The Halloween Jester",
+// Sagittarius 1–30
+"Retired Army Veterans Gather to Reawaken Old Memories",
+"The Ocean Covered With Whitecaps",
+"A Philosopher Giving a Lecture on Ethics",
+"A Little Child Learning to Walk With the Encouragement of His Parents",
+"An Old Owl Up in a Tree",
+"A Game of Cricket",
+"Cupid Knocking at the Door",
+"Rocks and Things Forming Therein",
+"A Sculptor's Vision Is Slowly But Surely Being Projected Into Outer Form",
+"A Theatrical Representation of a Golden Haired Goddess of Opportunity",
+"In the Left Section of an Archaic Temple, a Lamp Burns in a Container Shaped Like a Human Body",
+"A Flag Turns Into an Eagle and the Eagle Into a Chanticleer Saluting the Dawn",
+"A Widow's Past Is Brought to Light",
+"The Pyramids and the Sphinx",
+"The Ground Hog Looking for Its Shadow",
+"Seagulls Watching a Ship",
+"An Easter Sunrise Service Draws a Large Attendance",
+"Children Playing on the Beach",
+"Pelicans Moving Their Habitat",
+"In an Old-Fashioned Northern Village Men Cut the Ice of a Frozen Pond for Use During the Summer",
+"A Child and a Dog Wearing Borrowed Eyeglasses",
+"A Chinese Laundry",
+"Immigrants Entering a New Country",
+"A Bluebird Standing at the Door of the House",
+"A Chubby Boy on a Hobby-Horse",
+"A Flag-Bearer in a Battle",
+"A Sculptor at His Work",
+"An Old Bridge Over a Beautiful Stream Is Still in Constant Use",
+"A Fat Boy Mowing the Lawn",
+"The Pope Blessing the Faithful",
+// Capricorn 1–30
+"An Indian Chief Claims Power From the Assembled Tribe",
+"Three Stained Glass Windows in a Gothic Church, One Damaged by Bombardment",
+"The Human Soul, in Its Eagerness for New Experiences, Seeks Embodiment",
+"A Group of People Outfitting a Large Canoe at the Start of a Journey by Water",
+"Indians on the Warpath, While Some Men Perform a War Dance",
+"Ten Logs Lie Under an Archway Leading to Darker Woods",
+"A Veiled Prophet Speaks, Seized by the Power of a God",
+"In a Sun-Lit Home Domesticated Birds Sing Joyously",
+"An Angel Carrying a Harp",
+"An Albatross Feeding From the Hand of a Sailor",
+"Pheasants Display Their Brilliant Plumage on a Private Estate",
+"An Illustrated Lecture on Natural Science Reveals Little-Known Aspects of Life",
+"A Fire Worshipper Meditates on the Ultimate Realities of Existence",
+"An Ancient Bas-Relief Carved in Granite Remains a Witness to a Long-Forgotten Culture",
+"In a Hospital, the Children's Ward Is Filled With Toys",
+"Boys Trying to Catch a Fish",
+"A Young Girl Surreptitiously Bathing in the Nude",
+"The Union Jack Flies From a British Warship",
+"A Child of About Five With a Huge Shopping Bag",
+"A Hidden Choir Singing During a Religious Service",
+"A Famous Singer Is Proving Her Virtuosity During an Operatic Performance",
+"A General Accepting Defeat Gracefully",
+"A Soldier Receiving Two Awards for Bravery in Combat",
+"A Woman Entering a Convent",
+"An Oriental Rug Dealer",
+"A Water Sprite",
+"Pilgrims Climbing the Steep Steps Leading to a Mountain Shrine",
+"A Large Aviary",
+"A Woman Reading Tea Leaves",
+"A Secret Business Conference",
+// Aquarius 1–30
+"An Old Adobe Mission in California",
+"An Unexpected Thunderstorm",
+"A Deserter From the Navy",
+"A Hindu Yogi Demonstrates His Healing Powers",
+"A Council of Ancestors Is Revealed in Spiritual Session",
+"A Masked Ball",
+"A Child Is Seen Being Born Out of an Egg",
+"Beautifully Gowned Wax Figures on Display",
+"A Flag Is Seen Turning Into an Eagle",
+"A Man Who Has Been an Extremist Is Brought Before a Jury of His Peers",
+"During a Silent Hour a Man Receives a New Inspiration Which May Change His Life",
+"On a Beautiful Lawn, Bands of Croquet Players",
+"A Barometer",
+"A Train Entering a Tunnel",
+"Two Lovebirds Sitting on a Fence and Whispering to Each Other",
+"A Big Businessman at His Desk",
+"A Watchman at His Post",
+"A Man Unmasked",
+"A Forest Fire Quenched",
+"A Large White Dove Bearing a Message",
+"A Woman Disappointed and Disillusioned, Courageously Faces a Seemingly Empty Life",
+"A Rug Is Placed on a Floor for Children to Play",
+"A Big Bear Sitting Down and Waving All Its Paws",
+"A Man Turning His Back on His Passions and Teaching From His Experience",
+"A Butterfly With the Right Wing More Perfectly Formed",
+"A Hydrometer",
+"An Ancient Pottery Bowl Filled With Violets",
+"A Tree Felled and Sawed to Ensure a Supply of Wood for the Winter",
+"A Butterfly Emerging From a Chrysalis",
+"The Field of Ardath in Bloom",
+// Pisces 1–30
+"In a Crowded Harbor a Wissful Boat Is Waiting to Be Filled With Precious Cargo",
+"A Squirrel Hiding From Hunters",
+"Petrified Tree Trunks Lie Broken on Desert Sand",
+"Heavy Car Traffic on a Narrow Isthmus Linking Two Seaside Resorts",
+"A Church Bazaar",
+"Officers on Dress Parade",
+"Illuminated by a Shaft of Light, a Large Cross Lies on Rocks Surrounded by Sea",
+"A Girl Blowing a Bugle",
+"A Jockey",
+"An Aviator Pursues His Journey Past the Clouds and Sunlit Heavens",
+"Men Traveling a Narrow Path, Seeking Illumination",
+"In the Sanctuary of an Occult Brotherhood, Newly Initiated Members Are Being Examined and Their Character Tested",
+"A Sword, Used in Many Battles, Is Now in a Museum",
+"A Lady in Fox Fur",
+"An Officer Drilling His Men in a Simulated Attack Under a Barrage of Live Shells",
+"In the Quiet of His Study a Creative Individual Experiences a Flow of Inspiration",
+"An Easter Parade",
+"In a Gigantic Tent, Villagers Witness a Spectacular Performance",
+"A Master Instructing His Pupil",
+"A Table Set for an Evening Meal",
+"Under the Watchful and Kind Eye of a Chinese Servant, a Girl Practices Her Violin",
+"A Prophet Bringing Down the New Law From the Mountain",
+"A 'Materializing' Medium Giving a Seance",
+"An Inhabited Island",
+"The Purging of the Priesthood",
+"West Point Cadets in Full Dress Parade",
+"The Harvest Moon",
+"A Fertile Garden Under the Full Moon",
+"Light Breaking Into Many Colors as it Passes Through a Prism",
+"A Majestic Rock Formation Resembling a Face Is Idealized by a Dreamer"
+];
+
+function getSabian(longitude) {
+  var deg = Math.floor(longitude) % 360;
+  if (deg < 0) deg += 360;
+  return SABIANS[deg] || '—';
+}
+
+// ── SIGN DATA ─────────────────────────────────────────────────────────────────
+var SIGNS = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
+var SIGN_GLYPHS = ['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'];
+
+// ── DECAN DATA ────────────────────────────────────────────────────────────────
+// [chaldean ruler, tarot card, tarot title]
+var DECANS = [
+  // Aries I II III
+  [['Mars','2 of Wands','Dominion'],['Sun','3 of Wands','Virtue'],['Venus','4 of Wands','Completion']],
+  // Taurus I II III
+  [['Mercury','5 of Pentacles','Worry'],['Moon','6 of Pentacles','Success'],['Saturn','7 of Pentacles','Failure']],
+  // Gemini I II III
+  [['Jupiter','8 of Swords','Interference'],['Mars','9 of Swords','Cruelty'],['Sun','10 of Swords','Ruin']],
+  // Cancer I II III
+  [['Venus','2 of Cups','Love'],['Mercury','3 of Cups','Abundance'],['Moon','4 of Cups','Luxury']],
+  // Leo I II III
+  [['Saturn','5 of Wands','Strife'],['Jupiter','6 of Wands','Victory'],['Mars','7 of Wands','Valour']],
+  // Virgo I II III
+  [['Sun','8 of Pentacles','Prudence'],['Venus','9 of Pentacles','Gain'],['Mercury','10 of Pentacles','Wealth']],
+  // Libra I II III
+  [['Moon','2 of Swords','Peace'],['Saturn','3 of Swords','Sorrow'],['Jupiter','4 of Swords','Truce']],
+  // Scorpio I II III
+  [['Mars','5 of Cups','Disappointment'],['Sun','6 of Cups','Pleasure'],['Venus','7 of Cups','Debauch']],
+  // Sagittarius I II III
+  [['Mercury','8 of Wands','Swiftness'],['Moon','9 of Wands','Strength'],['Saturn','10 of Wands','Oppression']],
+  // Capricorn I II III
+  [['Jupiter','2 of Pentacles','Change'],['Mars','3 of Pentacles','Works'],['Sun','4 of Pentacles','Power']],
+  // Aquarius I II III
+  [['Venus','5 of Swords','Defeat'],['Mercury','6 of Swords','Science'],['Moon','7 of Swords','Futility']],
+  // Pisces I II III
+  [['Saturn','8 of Cups','Indolence'],['Jupiter','9 of Cups','Happiness'],['Mars','10 of Cups','Satiety']]
+];
+
+function getDecan(longitude) {
+  var absLon = ((longitude % 360) + 360) % 360;
+  var signIndex = Math.floor(absLon / 30);
+  var degInSign = absLon % 30;
+  var decanIndex = Math.floor(degInSign / 10);
+  return DECANS[signIndex][decanIndex];
+}
+
+// ── DIGNITY TABLE ─────────────────────────────────────────────────────────────
+var DIGNITIES = {
+  sun:     { domicile:['Leo'], exaltation:'Aries', detriment:['Aquarius'], fall:'Libra' },
+  moon:    { domicile:['Cancer'], exaltation:'Taurus', detriment:['Capricorn'], fall:'Scorpio' },
+  mercury: { domicile:['Gemini','Virgo'], exaltation:'Virgo', detriment:['Sagittarius','Pisces'], fall:'Pisces' },
+  venus:   { domicile:['Taurus','Libra'], exaltation:'Pisces', detriment:['Aries','Scorpio'], fall:'Virgo' },
+  mars:    { domicile:['Aries','Scorpio'], exaltation:'Capricorn', detriment:['Taurus','Libra'], fall:'Cancer' },
+  jupiter: { domicile:['Sagittarius','Pisces'], exaltation:'Cancer', detriment:['Gemini','Virgo'], fall:'Capricorn' },
+  saturn:  { domicile:['Capricorn','Aquarius'], exaltation:'Libra', detriment:['Cancer','Leo'], fall:'Aries' },
+  uranus:  { domicile:['Aquarius'], exaltation:null, detriment:['Leo'], fall:null },
+  neptune: { domicile:['Pisces'], exaltation:null, detriment:['Virgo'], fall:null },
+  pluto:   { domicile:['Scorpio'], exaltation:null, detriment:['Taurus'], fall:null }
+};
+
+function getDignity(key, sign) {
+  var d = DIGNITIES[key];
+  if (!d) return null;
+  if (d.domicile && d.domicile.indexOf(sign) !== -1) return 'Domicile';
+  if (d.exaltation === sign) return 'Exaltation';
+  if (d.fall === sign) return 'Fall';
+  if (d.detriment && d.detriment.indexOf(sign) !== -1) return 'Detriment';
+  return null;
+}
+
+// ── ASPECT ENGINE ─────────────────────────────────────────────────────────────
+var ASPECTS = [
+  { name:'Conjunction', symbol:'☌', angle:0, orb:8, nature:'variable' },
+  { name:'Sextile',     symbol:'✶', angle:60, orb:6, nature:'harmonious' },
+  { name:'Square',      symbol:'□', angle:90, orb:8, nature:'tense' },
+  { name:'Trine',       symbol:'△', angle:120, orb:8, nature:'harmonious' },
+  { name:'Opposition',  symbol:'☍', angle:180, orb:8, nature:'tense' }
+];
+
+function findAspects(planets) {
+  var results = [];
+  var keys = Object.keys(planets);
+  for (var i = 0; i < keys.length; i++) {
+    for (var j = i + 1; j < keys.length; j++) {
+      var a = planets[keys[i]], b = planets[keys[j]];
+      var diff = Math.abs(a.lon - b.lon) % 360;
+      if (diff > 180) diff = 360 - diff;
+      ASPECTS.forEach(function(asp) {
+        var orb = Math.abs(diff - asp.angle);
+        if (orb <= asp.orb) {
+          results.push({
+            p1: keys[i], p2: keys[j],
+            aspect: asp.name, symbol: asp.symbol,
+            nature: asp.nature, orb: orb.toFixed(1),
+            applying: false
+          });
+        }
+      });
+    }
+  }
+  return results;
+}
+
+// ── PLANET SYMBOLS ────────────────────────────────────────────────────────────
+var P_GLYPHS = {
+  sun:'☀', moon:'☽', mercury:'☿', venus:'♀', mars:'♂',
+  jupiter:'♃', saturn:'♄', uranus:'♅', neptune:'♆', pluto:'♇', chiron:'⚷', northNode:'☊'
+};
+var P_NAMES = {
+  sun:'Sun', moon:'Moon', mercury:'Mercury', venus:'Venus', mars:'Mars',
+  jupiter:'Jupiter', saturn:'Saturn', uranus:'Uranus', neptune:'Neptune', pluto:'Pluto',
+  chiron:'Chiron', northNode:'North Node'
+};
+var P_ORDER = ['sun','moon','mercury','venus','mars','jupiter','saturn','uranus','neptune','pluto'];
+
+// Tag color map
+var TAG_COLORS = {
+  'Domicile':'tag-gold', 'Exaltation':'tag-gold', 'Fall':'tag-indigo',
+  'Detriment':'tag-indigo', 'Retrograde':'tag-silver',
+  'Fixed Earth':'tag-gold', 'Fixed Air':'tag-silver', 'Fixed Fire':'tag-amber',
+  'Fixed Water':'tag-indigo', 'Mutable Earth':'tag-sage', 'Mutable Air':'tag-sage',
+  'Mutable Fire':'tag-amber', 'Mutable Water':'tag-indigo',
+  'Cardinal Earth':'tag-gold', 'Cardinal Air':'tag-silver', 'Cardinal Fire':'tag-amber',
+  'Cardinal Water':'tag-teal'
+};
+var MODALITIES = {
+  Aries:'Cardinal',Taurus:'Fixed',Gemini:'Mutable',Cancer:'Cardinal',
+  Leo:'Fixed',Virgo:'Mutable',Libra:'Cardinal',Scorpio:'Fixed',
+  Sagittarius:'Mutable',Capricorn:'Cardinal',Aquarius:'Fixed',Pisces:'Mutable'
+};
+var ELEMENTS = {
+  Aries:'Fire',Taurus:'Earth',Gemini:'Air',Cancer:'Water',
+  Leo:'Fire',Virgo:'Earth',Libra:'Air',Scorpio:'Water',
+  Sagittarius:'Fire',Capricorn:'Earth',Aquarius:'Air',Pisces:'Water'
+};
+
+// ── WEEK UTILITIES ────────────────────────────────────────────────────────────
+function getMondayOf(date) {
+  var d = new Date(date);
+  var day = d.getDay(); // 0=Sun
+  var diff = day === 0 ? -6 : 1 - day;
+  d.setDate(d.getDate() + diff);
+  d.setHours(0,0,0,0);
+  return d;
+}
+
+var MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+var DAY_NAMES   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var SHORT_MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function fmtDate(d) {
+  return MONTH_NAMES[d.getMonth()] + ' ' + d.getDate();
+}
+
+// ── ASTRONOMY-ENGINE WRAPPERS ─────────────────────────────────────────────────
+function getPlanetPositions(date) {
+  if (typeof Astronomy === 'undefined') return null;
+  var A = Astronomy;
+  var result = {};
+
+  function calc(key, body) {
+    try {
+      var eq = A.GeoVector(body, date, false);
+      var ecl = A.Ecliptic(eq);
+      var lon = ((ecl.elon % 360) + 360) % 360;
+      var signIndex = Math.floor(lon / 30);
+      var degInSign = lon % 30;
+      var deg = Math.floor(degInSign);
+      var min = Math.floor((degInSign - deg) * 60);
+      result[key] = {
+        lon: lon,
+        sign: SIGNS[signIndex],
+        signIndex: signIndex,
+        degree: deg + '°' + (min < 10 ? '0' : '') + min + "'",
+        sabian: getSabian(lon),
+        retrograde: false
+      };
+    } catch(e) {}
+  }
+
+  // Retrograde: compare with position 1 day ago
+  function checkRetro(key, body) {
+    try {
+      var yesterday = new Date(date.getTime() - 86400000);
+      var eq1 = A.GeoVector(body, date, false);
+      var eq0 = A.GeoVector(body, yesterday, false);
+      var ecl1 = A.Ecliptic(eq1).elon;
+      var ecl0 = A.Ecliptic(eq0).elon;
+      var motion = ecl1 - ecl0;
+      if (motion > 180) motion -= 360;
+      if (motion < -180) motion += 360;
+      if (result[key]) result[key].retrograde = motion < 0;
+    } catch(e) {}
+  }
+
+  var bodies = {
+    sun: 'Sun', moon: 'Moon', mercury: 'Mercury', venus: 'Venus',
+    mars: 'Mars', jupiter: 'Jupiter', saturn: 'Saturn',
+    uranus: 'Uranus', neptune: 'Neptune', pluto: 'Pluto'
+  };
+
+  Object.entries(bodies).forEach(function(e) { calc(e[0], e[1]); });
+  ['mercury','venus','mars','jupiter','saturn','uranus','neptune','pluto'].forEach(function(k) {
+    checkRetro(k, bodies[k]);
+  });
+
+  return result;
+}
+
+function getMoonPhase(date) {
+  if (typeof Astronomy === 'undefined') return { name: '—', illumination: 0 };
+  try {
+    var A = Astronomy;
+    var angle = A.MoonPhase(date);
+    var illum = A.Illumination('Moon', date);
+    var names = ['New Moon','Waxing Crescent','First Quarter','Waxing Gibbous','Full Moon','Waning Gibbous','Last Quarter','Waning Crescent'];
+    var idx = Math.round(angle / 45) % 8;
+    return { name: names[idx], illumination: Math.round(illum.phase_fraction * 100), angle: angle };
+  } catch(e) {
+    return { name: '—', illumination: 0 };
+  }
+}
+
+// ── RENDER: SKY CARDS ─────────────────────────────────────────────────────────
+function renderSky(planets, weekNotes) {
+  var notes = (weekNotes && weekNotes.sky) || {};
+  var html = '';
+  P_ORDER.forEach(function(key) {
+    var p = planets[key];
+    if (!p) return;
+    var glyph = P_GLYPHS[key] || '●';
+    var name = P_NAMES[key] || key;
+    var dignity = getDignity(key, p.sign);
+    var decan = getDecan(p.lon);
+    var modality = MODALITIES[p.sign] || '';
+    var element = ELEMENTS[p.sign] || '';
+    var modalEl = modality + ' ' + element;
+    var tagClass = TAG_COLORS[modalEl] || 'tag-silver';
+    var note = (notes[key] && notes[key].note) || '';
+
+    html += '<div class="card">';
+    html += '<span class="card-symbol">' + glyph + '</span>';
+    html += '<p class="card-label">' + name + ' · ' + p.sign + (p.retrograde ? ' ℞' : '') + '</p>';
+    html += '<h3 class="card-title">' + p.degree + ' ' + p.sign + '</h3>';
+    html += '<p class="card-body" style="font-style:italic;color:var(--text-muted);font-size:12px;margin-bottom:6px;">Sabian: ' + p.sabian + '</p>';
+    if (note) html += '<p class="card-body">' + note + '</p>';
+    html += '<p class="card-body" style="font-size:11px;color:var(--text-muted);">Decan: ' + decan[0] + ' in ' + p.sign + ' · ' + decan[1] + ' · ' + decan[2] + '</p>';
+    if (dignity) html += '<span class="card-tag tag-gold">' + dignity + '</span>';
+    if (p.retrograde) html += '<span class="card-tag tag-silver">Retrograde</span>';
+    html += '<span class="card-tag ' + tagClass + '">' + modalEl + '</span>';
+    html += '</div>';
+  });
+  document.getElementById('sky-cards').innerHTML = html || '<p style="color:var(--text-muted);padding:40px;">No sky data available.</p>';
+}
+
+// ── RENDER: MAJOR ASPECTS ─────────────────────────────────────────────────────
+function renderMajorAspects(planets, weekNotes) {
+  var aspects = findAspects(planets);
+  var notes = (weekNotes && weekNotes.aspects) || {};
+  if (!aspects.length) {
+    document.getElementById('major-aspects-content').innerHTML = '<p style="padding:40px;color:var(--text-muted);font-style:italic;">No major aspects in orb this week.</p>';
+    return;
+  }
+  var html = '<div class="card-grid">';
+  aspects.forEach(function(a) {
+    var n1 = P_NAMES[a.p1], n2 = P_NAMES[a.p2];
+    var g1 = P_GLYPHS[a.p1], g2 = P_GLYPHS[a.p2];
+    var key = a.p1 + '_' + a.p2;
+    var note = (notes[key]) || (notes[a.p1+'_'+a.p2+'_'+a.aspect.toLowerCase()]) || '';
+    var tagClass = a.nature === 'harmonious' ? 'tag-gold' : a.nature === 'tense' ? 'tag-amber' : 'tag-silver';
+    html += '<div class="card">';
+    html += '<span class="card-symbol" style="font-size:22px;">' + g1 + a.symbol + g2 + '</span>';
+    html += '<p class="card-label">' + n1 + ' ' + a.name + ' ' + n2 + '</p>';
+    html += '<h3 class="card-title" style="font-size:16px;">' + a.symbol + ' ' + a.orb + '° orb</h3>';
+    if (note) html += '<p class="card-body">' + note + '</p>';
+    html += '<span class="card-tag ' + tagClass + '">' + a.nature + '</span>';
+    html += '</div>';
+  });
+  html += '</div>';
+  document.getElementById('major-aspects-content').innerHTML = html;
+}
+
+// ── RENDER: DAILY ASPECTS ─────────────────────────────────────────────────────
+function renderDailyAspects(monday, weekNotes) {
+  var days = (weekNotes && weekNotes.days) || [];
+  var html = '<div class="aspect-list">';
+  for (var i = 0; i < 7; i++) {
+    var d = new Date(monday.getTime() + i * 86400000);
+    var dayName = DAY_NAMES[d.getDay()];
+    var dateStr = fmtDate(d);
+    var dayData = days[i] || {};
+    var dayId = 'day-' + i;
+    html += '<div class="aspect-day" id="' + dayId + '">';
+    html += '<div class="aspect-day-header" onclick="toggleDay(\'' + dayId + '\')">';
+    html += '<span class="aspect-day-num">' + d.getDate() + '</span>';
+    html += '<div><div class="aspect-day-name">' + dayName + ', ' + dateStr + '</div>';
+    if (dayData.sub) html += '<div style="font-size:12px;color:var(--text-muted);font-family:\'IM Fell English\',serif;font-style:italic;">' + dayData.sub + '</div>';
+    html += '</div>';
+    if (dayData.preview) html += '<span class="aspect-day-preview">' + dayData.preview + '</span>';
+    html += '<span class="aspect-day-chevron">▾</span>';
+    html += '</div>';
+    html += '<div class="aspect-day-body">';
+    if (dayData.aspects && dayData.aspects.length) {
+      dayData.aspects.forEach(function(a) {
+        html += '<div class="aspect-item">';
+        html += '<span class="aspect-glyph">' + (a.glyph || '●') + '</span>';
+        html += '<div class="aspect-detail">';
+        html += '<div class="aspect-planets">' + (a.planets || '') + '</div>';
+        html += '<div class="aspect-meaning">' + (a.meaning || '') + '</div>';
+        html += '</div></div>';
+      });
+    } else {
+      html += '<p style="padding:16px 0;color:var(--text-muted);font-style:italic;font-family:\'IM Fell English\',serif;">Reading for ' + dateStr + ' forthcoming.</p>';
+    }
+    html += '</div></div>';
+  }
+  html += '</div>';
+  document.getElementById('aspect-list').innerHTML = html;
+}
+
+// ── RENDER: DECANS ────────────────────────────────────────────────────────────
+function renderDecans(planets, weekNotes) {
+  var notes = (weekNotes && weekNotes.decanNotes) || {};
+  var html = '<div class="card-grid">';
+  P_ORDER.forEach(function(key) {
+    var p = planets[key];
+    if (!p) return;
+    var d = getDecan(p.lon);
+    var decanNum = Math.floor((p.lon % 30) / 10) + 1;
+    var numStr = ['I','II','III'][decanNum-1];
+    var note = notes[key] || '';
+    html += '<div class="card">';
+    html += '<span class="card-symbol">' + (P_GLYPHS[key]||'●') + '</span>';
+    html += '<p class="card-label">' + P_NAMES[key] + ' · Decan ' + numStr + ' of ' + p.sign + '</p>';
+    html += '<h3 class="card-title">' + d[1] + '</h3>';
+    html += '<p class="card-body" style="font-size:11px;color:var(--text-muted);">' + d[2] + ' · Ruler: ' + d[0] + '</p>';
+    if (note) html += '<p class="card-body">' + note + '</p>';
+    html += '</div>';
+  });
+  html += '</div>';
+  document.getElementById('decans-content').innerHTML = html;
+}
+
+// ── RENDER: EDITORIAL PANELS (from week.json) ─────────────────────────────────
+function renderEditorial(weekData, id, field) {
+  var el = document.getElementById('content-' + id);
+  if (!el) return;
+  var content = weekData[field];
+  if (!content) { el.innerHTML = '<p style="padding:40px;text-align:center;font-family:\'IM Fell English\',serif;font-style:italic;color:var(--text-muted);">Reading for this section coming soon.</p>'; return; }
+  if (typeof content === 'string') { el.innerHTML = '<div style="padding:20px 0;">' + content + '</div>'; return; }
+  // Array of {title, body} objects
+  var html = '<div class="card-grid">';
+  content.forEach(function(item) {
+    html += '<div class="card"><h3 class="card-title">' + (item.title||'') + '</h3>';
+    html += '<p class="card-body">' + (item.body||item.text||'') + '</p>';
+    if (item.tag) html += '<span class="card-tag tag-gold">' + item.tag + '</span>';
+    html += '</div>';
+  });
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+// ── RENDER: MOON PHASE SECTION ────────────────────────────────────────────────
+function renderMoon(phase, monday, weekNotes) {
+  var moonTitle = document.querySelector('#today .section-title');
+  var moonInfo  = document.querySelector('#today .moon-info');
+  var moonName  = document.querySelector('#today .moon-phase-name');
+  var moonNext  = document.querySelector('#today .moon-next');
+  var moonShadow = document.querySelector('#today .moon-shadow');
+
+  if (moonTitle) moonTitle.textContent = phase.name + ' in Progress';
+  if (moonName)  moonName.textContent = phase.name + ' · ' + phase.illumination + '% Illuminated';
+
+  var nextDate = fmtDate(new Date(monday.getTime() + 7 * 86400000));
+  if (moonNext) moonNext.innerHTML = 'Week of ' + fmtDate(monday) + '<br>Next Monday: ' + nextDate;
+
+  // Adjust shadow based on phase angle
+  if (moonShadow) {
+    var pct = Math.round((1 - Math.sin(phase.angle * Math.PI / 180) * 0.5 + 0.5) * 100);
+    moonShadow.style.background = 'linear-gradient(90deg,var(--shadow,#0a0a0f) ' + pct + '%,transparent ' + pct + '%)';
+  }
+
+  if (moonInfo && weekNotes && weekNotes.moonNote) {
+    moonInfo.querySelector('p') && (moonInfo.querySelector('p').textContent = weekNotes.moonNote);
+  }
+}
+
+// ── MAIN INIT ─────────────────────────────────────────────────────────────────
+function initWeekly() {
+  var now = new Date();
+  var monday = getMondayOf(now);
+  var sunday = new Date(monday.getTime() + 6 * 86400000);
+
+  // Set week header dates immediately
+  var eyebrow = document.getElementById('wk-eyebrow');
+  if (eyebrow) eyebrow.textContent = 'Week of ' + fmtDate(monday) + '–' + fmtDate(sunday) + ', ' + monday.getFullYear();
+
+  // Compute live astronomical data
+  var planets = getPlanetPositions(now) || {};
+  var phase   = getMoonPhase(now);
+
+  // Fetch editorial layer
+  fetch('/content/week.json?v=' + monday.getTime())
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var wk = data.week || {};
+      if (document.getElementById('wk-title'))    document.getElementById('wk-title').textContent    = wk.title    || '—';
+      if (document.getElementById('wk-subtitle')) document.getElementById('wk-subtitle').textContent = wk.subtitle || '';
+
+      renderSky(planets, data);
+      renderMajorAspects(planets, data);
+      renderDailyAspects(monday, data);
+      renderDecans(planets, data);
+      renderEditorial(data, 'calendar',   'calendar');
+      renderEditorial(data, 'political',  'political');
+      renderEditorial(data, 'symbols',    'symbols');
+      renderEditorial(data, 'colors',     'colors');
+      renderEditorial(data, 'herbs',      'herbs');
+      renderEditorial(data, 'numerology', 'numerology');
+      renderEditorial(data, 'tarot',      'tarot');
+      renderMoon(phase, monday, data);
+    })
+    .catch(function() {
+      // Fallback: render sky data even without week.json
+      if (document.getElementById('wk-title')) document.getElementById('wk-title').textContent = 'Weekly Reading';
+      renderSky(planets, {});
+      renderMajorAspects(planets, {});
+      renderDailyAspects(monday, {});
+      renderDecans(planets, {});
+      renderMoon(phase, monday, {});
+    });
+}
+
+// Run after astronomy-engine loads
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initWeekly);
+} else {
+  initWeekly();
+}
+
+})();
+// ══ END TAUKAMII WEEKLY ENGINE ══════════════════════════════════════════════
+
 </script>
 </body>
