@@ -1,232 +1,135 @@
 {
   "week": {
-    "dateRange": "May 18–25, 2026",
-    "title": "The Tongue of the World",
-    "subtitle": "Gemini Season Begins · May 20",
-    "season": "Taurus Season → Gemini Season (May 20)",
-    "moonPhase": "Waxing Crescent → First Quarter",
-    "firstQuarter": "May 23, 2026",
-    "numerology": {
-      "today": { "date": "May 18, 2026", "number": 6, "vibration": "Venus", "meaning": "Beauty as Discipline · What we tend, grows · The garden responds to care" },
-      "ingress": { "date": "May 20, 2026", "number": 8, "vibration": "Saturn", "meaning": "The power of the word · What is spoken, becomes · Speak with authority" },
-      "newCycle": { "date": "May 22, 2026", "number": 1, "vibration": "Sun", "meaning": "The fresh start coded into the root · Gemini 1° — language at its origin" },
-      "weekNumber": { "number": 3, "vibration": "Jupiter", "meaning": "The week of expression · Outward movement · Creative amplification" }
-    }
+    "title": "The Body Knows Before the Mind Does",
+    "subtitle": "Cancer Season Opens · June 21"
   },
   "sky": {
-    "sun":     { "sign": "Taurus → Gemini", "degree": "28°14'", "ingressDate": "May 20", "decan": "III", "sabian": "A Peacock Parading on an Ancient Lawn", "note": "Final days of Taurus. The body prepares to become voice." },
-    "moon":    { "sign": "Gemini", "degree": "20°38'", "decan": "III", "phase": "Waxing Crescent", "sabian": "A Cafeteria with an Abundance of Choices", "note": "The mind flooded with data. Choose what to feed." },
-    "mercury": { "sign": "Taurus", "degree": "24°52'", "decan": "III", "sabian": "A Vast Public Park", "note": "Mercury preparing to carry its rulership into Gemini. The groundwork before the speech." },
-    "venus":   { "sign": "Gemini", "degree": "24°07'", "decan": "III", "note": "Applying toward Jupiter conjunction June 9. The pleasure of multiplicity." },
-    "mars":    { "sign": "Aries", "degree": "26°44'", "decan": "III", "dignity": "Domicile", "sabian": "A Flag Bearer in a Battle", "note": "Final days of the Aries warrior cycle. What are you carrying?" },
-    "jupiter": { "sign": "Cancer", "degree": "20°44'", "dignity": "Exaltation", "note": "The great benefic in its most powerful placement. Abundance through emotional intelligence." },
-    "saturn":  { "sign": "Aries", "degree": "10°24'", "decan": "II", "note": "Still conjunct Neptune. Structure and dissolution still intertwined." },
-    "uranus":  { "sign": "Gemini", "degree": "1°07'", "note": "The revolutionary planet in the sign of language. The disruption of how we speak and think has barely begun." },
-    "neptune": { "sign": "Aries", "degree": "3°54'", "note": "Conjunct Saturn. Sacred confusion meeting disciplined form." },
-    "pluto":   { "sign": "Aquarius", "degree": "5°19'", "retrograde": true },
-    "northNode": { "sign": "Pisces", "degree": "4°51'", "retrograde": true },
-    "chiron":  { "sign": "Aries", "degree": "28°04'", "note": "The wound at the final degree of Aries. Healing the war-self before Taurus closes." }
+    "sun":     { "note": "Final days of Gemini — the mind at the edge of its season. Sun enters Cancer June 21 at the solstice, the longest day. The light tips toward the inner world." },
+    "moon":    { "note": "Moving through the week, pulling tides. Watch what emotions surface around the Full Moon in Capricorn June 21 — the solstice Full Moon is a rare and charged combination." },
+    "mercury": { "note": "In Gemini, at home, in full voice. The messenger ruling its own season. Words come fast. Track which ones are true." },
+    "venus":   { "note": "Moving through Cancer, entering the domain of nourishment, roots, and belonging. What do you love that also holds you?" },
+    "mars":    { "note": "In Taurus — slowed, deliberate, building. The warrior becomes the farmer. What are you cultivating with sustained effort?" },
+    "jupiter": { "note": "Exalted in Cancer through June 2026. The great benefic at maximum generosity. Abundance through emotional intelligence, family, and deep roots." },
+    "saturn":  { "note": "Conjunct Neptune in Aries — structure and dissolution still intertwined. What is real about your ambitions? What was illusion?" },
+    "uranus":  { "note": "Early Gemini. The disruption of communication systems continues to unfold. Every transmission carries unexpected charge." },
+    "neptune": { "note": "Conjunct Saturn. The collective dream in the decan of initiation. Vision and discipline negotiating at the root." },
+    "pluto":   { "note": "Retrograde in Aquarius. Collective transformation being metabolized inward. What power structure are you examining within yourself?" }
   },
-  "geminiIngress": {
-    "date": "May 20, 2026",
-    "time": "approx. 3:37 AM EDT",
-    "what": "The Sun leaves Taurus — the fixed earth sign of the body, the voice, the garden — and enters Gemini, the mutable air sign of the mind, communication, and duality.",
-    "significance": "Gemini Season is the season of language. What you say. What you name. What you choose to articulate. Mercury rules this season. And Mercury is currently in Taurus — carrying the body's wisdom into the domain of speech. The word has roots.",
-    "watch": "Uranus is newly in Gemini. This is the first Gemini Season with Uranus in Gemini since 1942. Every time you open your mouth this season, something is being disrupted. Let it be disrupted toward truth."
+  "aspects": {
+    "sun_moon": "Solstice Full Moon — the two luminaries in opposition at the axis of the year. The peak of light meets the pull of deep water.",
+    "jupiter_saturn": "Jupiter in Cancer trine Saturn in Aries — the great benefic and the great teacher in harmonious conversation. What you're building has long-term structure.",
+    "venus_jupiter": "Venus applying to Jupiter in Cancer — a sweetness building in the home and the emotional body. What you love is growing.",
+    "saturn_neptune": "Saturn conjunct Neptune — the ongoing dissolution of inherited forms. What must be released before the new structure can hold?"
   },
-  "activeDecans": [
+  "days": [
     {
-      "planet": "Sun",
-      "sign": "Taurus",
-      "decan": "III",
-      "degrees": "20°–29°59'",
-      "chaldean": "Saturn in Taurus",
-      "triplicity": "Saturn (Capricorn)",
-      "tarot": "7 of Pentacles",
-      "tarotTitle": "Failure → Assessment → Long Vision",
-      "picatrix": "A Man plowing, sowing, and building — surveying what has been done",
-      "note": "The work was done. Now you look at what actually grew. This is not disappointment — this is agricultural wisdom."
+      "sub": "Sun in late Gemini · Moon building toward Full",
+      "preview": "☿ strong · Language as medicine",
+      "aspects": [
+        { "glyph": "☀→♋", "planets": "Sun approaching Cancer ingress (June 21)", "meaning": "The mind is finishing its season. Take stock of what you said, named, and communicated in Gemini. The mouth is closing. The chest is opening." },
+        { "glyph": "☽↑", "planets": "Moon waxing toward Full in Capricorn", "meaning": "Emotional volume rising. What responsibilities are you carrying? The Full Moon will illuminate what Capricorn rules in your chart." }
+      ]
     },
     {
-      "planet": "Moon",
-      "sign": "Gemini",
-      "decan": "III",
-      "degrees": "20°–29°59'",
-      "chaldean": "Saturn in Gemini",
-      "triplicity": "Saturn (Aquarius)",
-      "tarot": "10 of Swords",
-      "tarotTitle": "Ruin → End of a Mental Cycle",
-      "picatrix": "A Man with a helmet on his head, clothed in a coat of mail",
-      "note": "The mind at the end of itself. Not the end of everything. Just the end of this particular story you were telling. Let it end."
+      "sub": "Moon in Sagittarius",
+      "preview": "♃ exalted · Expansive feeling",
+      "aspects": [
+        { "glyph": "☽♐", "planets": "Moon in Sagittarius — fire, philosophy, long vision", "meaning": "The feeling body seeks meaning, distance, horizon. What do you believe that is actually true? What are you taking on faith that deserves examination?" },
+        { "glyph": "♃♋", "planets": "Jupiter exalted in Cancer — active all week", "meaning": "The great benefic continues its generous passage. The place in your chart where Cancer lives is being expanded, blessed, and asked to hold more." }
+      ]
     },
     {
-      "planet": "Mercury",
-      "sign": "Taurus",
-      "decan": "III",
-      "degrees": "20°–29°59'",
-      "chaldean": "Saturn in Taurus",
-      "triplicity": "Saturn (Capricorn)",
-      "tarot": "7 of Pentacles",
-      "tarotTitle": "Assessment · Long Harvest",
-      "picatrix": "A Man with a sickle in his hand, standing in a field that has already been reaped",
-      "note": "Mercury surveying what the body has built. Before the tongue moves, the hands know."
+      "sub": "Moon moves into Capricorn",
+      "preview": "Full Moon building · Saturn themes",
+      "aspects": [
+        { "glyph": "☽→♑", "planets": "Moon enters Capricorn", "meaning": "The emotional body puts on its work clothes. What needs to be completed before the Full Moon illuminates it tomorrow? Finish what can be finished." },
+        { "glyph": "♄☌♆", "planets": "Saturn conjunct Neptune exact (ongoing)", "meaning": "Structure and dissolution in the same breath. The forms you are releasing were never truly solid — they only felt that way. What remains when the mist clears is what was real." }
+      ]
     },
     {
-      "planet": "Mars",
-      "sign": "Aries",
-      "decan": "III",
-      "degrees": "20°–29°59'",
-      "chaldean": "Jupiter in Aries",
-      "triplicity": "Jupiter (Sagittarius)",
-      "tarot": "4 of Wands",
-      "tarotTitle": "Completion · Celebration",
-      "picatrix": "A White Man with Red Hair clothed in red, with a golden bracelet, riding a white horse",
-      "note": "The warrior approaching the gate of his own house. The campaign is ending. You are arriving at something."
+      "sub": "Summer Solstice · Full Moon in Capricorn · Sun enters Cancer",
+      "preview": "☀♋ ingress · ☽☍☀ exact · Solstice Full Moon",
+      "aspects": [
+        { "glyph": "☀→♋", "planets": "Sun enters Cancer (Summer Solstice)", "meaning": "The longest day. Light at its maximum — and immediately beginning to turn inward. Cancer Season opens: the season of home, family, emotional intelligence, and the interior world. What does 'home' mean to you right now?" },
+        { "glyph": "☽☍☀", "planets": "Full Moon in Capricorn opposite Sun in Cancer", "meaning": "A Solstice Full Moon is rare and charged. The axis: what you feel (Cancer) versus what you must build (Capricorn). What emotional truth is the structure of your life unable to hold? This is what the Full Moon reveals." },
+        { "glyph": "♃☽", "planets": "Jupiter in Cancer near the Full Moon axis", "meaning": "Jupiter amplifies the Full Moon's illumination. What is revealed is not small. What is expanded is not trivial. The blessing and the reckoning are the same event." }
+      ]
     },
     {
-      "planet": "Saturn + Neptune",
-      "sign": "Aries",
-      "decan": "II",
-      "degrees": "10°–19°59'",
-      "chaldean": "Sun in Aries",
-      "triplicity": "Sun (Leo)",
-      "tarot": "3 of Wands",
-      "tarotTitle": "Established Strength · Vision at the Horizon",
-      "picatrix": "A Woman dressed in green, lacking one hand, moving rapidly",
-      "note": "The conjunction of order and dissolution continues. Something that seemed solid is showing its dream-nature. Stay with both."
+      "sub": "Post-Full Moon · Sun in Cancer I",
+      "preview": "☽waning · Integration begins",
+      "aspects": [
+        { "glyph": "☽↓", "planets": "Moon waning in Capricorn — beginning dissemination phase", "meaning": "What was revealed at the Full Moon is now being processed. Don't rush the integration. Capricorn Moon says: metabolize slowly, build from what you learned." },
+        { "glyph": "☀♋I", "planets": "Sun in Cancer Decan I — Moon-ruled", "meaning": "The first decan of Cancer is the most purely lunar. Feeling, nourishment, origin, memory. What is feeding you? What is it time to feed?" }
+      ]
     },
     {
-      "planet": "Uranus",
-      "sign": "Gemini",
-      "decan": "I",
-      "degrees": "0°–9°59'",
-      "chaldean": "Jupiter in Gemini",
-      "triplicity": "Mercury (Gemini)",
-      "tarot": "8 of Swords",
-      "tarotTitle": "Interference · Restriction Becoming Clarity",
-      "picatrix": "A Man holding a helmet, clothed in a coat of mail, with a sword at his side",
-      "note": "The revolution in language and information is one degree old. We are still being blindfolded. The swords around us are our own assumptions."
+      "sub": "Moon into Aquarius · Rest",
+      "preview": "♅ themes · Collective processing",
+      "aspects": [
+        { "glyph": "☽→♒", "planets": "Moon enters Aquarius", "meaning": "Emotional detachment as a gift. Step back from what the Full Moon surfaced. The pattern is clearer from distance." },
+        { "glyph": "♅♊", "planets": "Uranus in Gemini — ongoing", "meaning": "The week's communications carry unexpected charge. Something you said or heard this week contained a disruption that will take time to understand." }
+      ]
+    },
+    {
+      "sub": "Sunday · Moon in Aquarius · Integration",
+      "preview": "Rest · Prepare for new week",
+      "aspects": [
+        { "glyph": "☽♒", "planets": "Moon in Aquarius", "meaning": "The waning Moon in Aquarius is a natural time for solitude, reflection, and detachment from drama. Let the week settle." },
+        { "glyph": "♀♋", "planets": "Venus in Cancer — gathering", "meaning": "What have you gathered this week — emotionally, relationally, materially? Cancer Venus wants to bring it home and hold it close." }
+      ]
     }
   ],
-  "herbs": [
-    {
-      "name": "Lavender",
-      "latin": "Lavandula angustifolia",
-      "planet": "Mercury / Venus",
-      "emoji": "💜",
-      "action": "Nervine, anxiolytic, antimicrobial, carminative",
-      "why": "Mercury in Taurus moving into Gemini — the nervous system preparing for the season of multitasking. Lavender holds the nervous system steady through the transition.",
-      "use": "Tea (1 tsp dried flowers, steep 7 minutes). Pillow sachet. Essential oil in carrier oil on temples.",
-      "caution": "Minimal. Avoid concentrated essential oil internally. Some hormonal sensitivity in children.",
-      "source": "Dioscorides De Materia Medica; Culpeper Complete Herbal (1653); Rosemary Gladstar"
-    },
-    {
-      "name": "Elderflower",
-      "latin": "Sambucus nigra",
-      "planet": "Venus / Mercury",
-      "emoji": "🌸",
-      "action": "Diaphoretic, anti-inflammatory, sinus clearing, gentle fever support",
-      "why": "Blooming now. Gemini rules the lungs, shoulders, and upper respiratory system. Elder presides over the threshold between seasons. The plant itself is a threshold plant.",
-      "use": "Tea (2 tsp dried flowers, 10 min steep). Elderflower cordial. Fresh flowers in water overnight.",
-      "caution": "Use flowers only — raw berries and bark contain cyanogenic compounds. Harvest with respect.",
-      "source": "Matthew Wood, The Book of Herbal Wisdom; Maud Grieve, A Modern Herbal (1931)"
-    },
-    {
-      "name": "Mullein",
-      "latin": "Verbascum thapsus",
-      "planet": "Saturn / Mercury",
-      "emoji": "🌿",
-      "action": "Lung tonic, expectorant, lymphatic, anti-inflammatory",
-      "why": "Gemini Season asks you to speak what you've been holding. Mullein opens the channel. The lungs where we carry what we could not say.",
-      "use": "Tea (1 tsp dried leaf, 15 min steep, strain through cloth). Smoke as ceremonial lung opener.",
-      "caution": "Strain very carefully — fine hairs can irritate throat.",
-      "source": "Matthew Wood; Cherokee and Appalachian traditional medicine"
-    },
-    {
-      "name": "Peppermint",
-      "latin": "Mentha x piperita",
-      "planet": "Mercury",
-      "emoji": "🌱",
-      "action": "Carminative, stimulant, cooling, analgesic, antiviral",
-      "why": "The signature herb of Mercury and Gemini. Quick, sharp, dual-natured. Gemini Season calls for mental agility. This is the herb of the quick mind.",
-      "use": "Tea (fresh or dried, 5–7 min steep). Inhale fresh leaves before speaking or writing. Essential oil diffused at desk.",
-      "caution": "Avoid with young infants. May relax esophageal sphincter — caution with GERD.",
-      "source": "Culpeper; Dioscorides; standard Western herbalism"
-    },
-    {
-      "name": "Lemon Verbena",
-      "latin": "Aloysia citrodora",
-      "planet": "Venus / Mercury",
-      "emoji": "🍃",
-      "action": "Nervine, digestive, antioxidant, mood-lifting",
-      "why": "Venus in Gemini 24° — beauty through language. Lemon Verbena is the herb of joy in the nervous system. The body responding to the sound of its own voice with pleasure.",
-      "use": "Fresh or dried tea (strong, 10 min). Combine with lavender. Rub fresh leaves on wrists.",
-      "caution": "Avoid in large amounts during pregnancy.",
-      "source": "Matthew Wood; Traditional European and South American herbalism"
-    }
+  "calendar": [
+    { "title": "Summer Solstice · June 21", "body": "The longest day of the year. In many traditions, a fire festival — Midsummer, Litha, the peak of solar power. Light at its maximum, beginning its turn toward dark. Not loss — completion. The full circle requires both arcs.", "tag": "Solar" },
+    { "title": "Full Moon in Capricorn · June 21", "body": "A Solstice Full Moon — the convergence of two of the most charged annual moments. Moon at 0° Capricorn opposite Sun at 0° Cancer. The axis of home and achievement, feeling and form, roots and peaks. What is the Full Moon showing you about the structure of your life?", "tag": "Lunar" },
+    { "title": "Cancer Season Opens · June 21", "body": "The Sun moves into Cancer, the sign of the Moon. Emotional intelligence, family, ancestry, nourishment, and the inner world become the season's work. The mouth of Gemini closes. The chest of Cancer opens.", "tag": "Ingress" },
+    { "title": "Fathers' Day · June 21", "body": "The Summer Solstice and Fathers' Day coincide this year. The Father principle and the solar maximum in one breath. Who are the fathers — literal and archetypal — that shaped your structure? What is yours to carry forward, and what is yours to release?", "tag": "Cultural" }
+  ],
+  "political": [
+    { "title": "Solstice Full Moon and Collective Illumination", "body": "Full Moons in Capricorn tend to illuminate structures of power and governance — who has it, who doesn't, what holds and what falls. With Jupiter in Cancer amplifying the emotional response, the people's voice (Cancer) is louder than the institution's order (Capricorn) this week. Watch where those tensions surface publicly." },
+    { "title": "Mars in Taurus and Economic Reality", "body": "Mars in Taurus moves slowly, deliberately, and with attention to material reality. Economic questions — resources, land, labor, what things actually cost — are being worked on below the level of spectacle. The headlines may be elsewhere. The real work is in the ground." },
+    { "title": "Saturn-Neptune: The Ongoing Reckoning", "body": "Saturn conjunct Neptune continues its long transit through Aries. Structures built on illusion are still being tested. This includes political narratives, institutional authority, and national mythologies. What is being asked: what holds up under reality? What was always vapor?" }
+  ],
+  "symbols": [
+    { "title": "The Solstice Point", "body": "0° Cancer — the cardinal ingress of summer. In ancient sky-watching, the solstice was the hinge point of the year. The Sun stands still (sol-stice) before reversing. A moment of maximum and threshold simultaneously. Pause. You are at the hinge.", "tag": "Solar" },
+    { "title": "The Full Moon as Mirror", "body": "The Moon reflects sunlight. A Full Moon is the moment of maximum reflection — the inner world fully illuminated by the outer. Whatever the Solstice Full Moon shows you, it is showing you something the Sun has been building toward all Gemini season.", "tag": "Lunar" },
+    { "title": "Cancer: The Shell and the Sea", "body": "Cancer's symbol is the crab — soft inside, armored outside. Moving sideways. Never approaching what it wants directly. The shell is not weakness. It is the wisdom of a creature that knows it is permeable. What are you protecting? What does the protection cost?", "tag": "Sign" },
+    { "title": "The Spiral", "body": "Cancer's motion is cyclical, not linear. The year spirals — we return to Solstice each year, but we are not the same person who stood here last June. The spiral allows repetition without sameness. What returned this year that is different from last year's version?", "tag": "Geometry" }
   ],
   "colors": [
-    { "name": "Yellow-Gold", "hex": "#d4a843", "association": "Mercury · Gemini · Mental clarity · The sun at its most communicative", "source": "Agrippa Three Books of Occult Philosophy (1531)" },
-    { "name": "Pale Violet", "hex": "#9b7ec8", "association": "Mercury's subtle · Twilight · The in-between · The mind between worlds", "source": "Agrippa; Hermetic color tradition" },
-    { "name": "Sky Blue", "hex": "#6a9fd8", "association": "Gemini · Air · Communication · The open sky the voice travels through", "source": "Astrolada Astrology of Colors" },
-    { "name": "Warm White", "hex": "#f5f0e8", "association": "Waxing Moon · Purity of intention · Beginning of the lunar cycle", "source": "Lunar calendar tradition; Farmers' Almanac" },
-    { "name": "Forest Green", "hex": "#3a6b3a", "association": "Taurus season ending · The body's inheritance · What was grown in earth, now released to air", "source": "Agrippa; Taurus-Venus tradition" }
+    { "title": "Silver", "body": "The color of the Moon. Reflective, luminous, containing all colors without asserting any. Cancer season calls for silver — worn, placed in the home, held in the hand. The Moon's metal, the metal of memory.", "tag": "Cancer · Moon" },
+    { "title": "Sea Green", "body": "The color of shallow water, of the tidal zone — the space between land and sea, between the known and the unknown. Cancer lives in that in-between. Sea green at the threshold.", "tag": "Tidal" },
+    { "title": "Pearl White", "body": "The iridescence of the oyster's interior — what is produced when irritation meets water meets time. The pearl is the Moon's jewel. Cancer's wisdom is often formed this way: something soft wrapping itself around something hard, over and over, until beauty results.", "tag": "Pearl" },
+    { "title": "Deep Indigo (Waning Moon)", "body": "As the Moon wanes through the week, the color deepens toward indigo — the color of integration, the color of what happens when the light turns inward. The Full Moon is silver. The waning Moon is indigo.", "tag": "Waning" }
+  ],
+  "herbs": [
+    { "title": "Moonwort (Botrychium lunaria)", "body": "An ancient fern associated with the Moon across European folk traditions. Used in Midsummer rites. A plant of mystery, lunar timing, and the unseen. Rare and protected — honor it in awareness rather than harvest.", "tag": "Lunar · Midsummer" },
+    { "title": "Lemon Balm (Melissa officinalis)", "body": "Melissa — the Greek word for honeybee. A calming, clarifying nervine ruled by the Moon. For the nervous system overwhelmed by Full Moon intensity. Drink as tea through the solstice week. The bees of the summer solstice visit this plant especially.", "tag": "Moon · Nervine" },
+    { "title": "St. John's Wort (Hypericum perforatum)", "body": "The great Midsummer herb, traditionally harvested at the Summer Solstice when its yellow flowers are at peak. Named for the feast of St. John the Baptist (June 24). A solar herb harvested at the solar peak — captures maximum light and carries it as medicine through the darker months. For grief, nerve pain, and the literal storage of summer's light.", "tag": "Solar · Solstice" },
+    { "title": "Elder Flower (Sambucus nigra)", "body": "Elder blooms at Midsummer, filling the air with cream-colored flowers and heady scent. A plant of the fairy world in British folk tradition — never cut elder without asking permission. Elderflower cordial, fritters, and tea at the solstice are ancient practice. The medicine: cooling in summer heat, supportive of the lymph and the immune system.", "tag": "Midsummer · Elder" }
+  ],
+  "numerology": [
+    { "title": "June 16 → 6", "body": "1+6+6+2+0+2+6 = 23 → 5. The number 5 governs change, the body in motion, freedom, and the unexpected. Appropriate for a week containing the Solstice Full Moon. The 5 asks: what needs to shift?", "tag": "Monday · 5" },
+    { "title": "June 21 (Solstice) → 3", "body": "2+1+6+2+0+2+6 = 19 → 10 → 1. The number 1: beginnings, the self, initiation. Cancer Season opens on a 1 day. The new emotional cycle begins with the self at the center of it. Who are you in your feeling world? That question is the season.", "tag": "Solstice · 1" },
+    { "title": "Week Number 25 of 2026", "body": "25 → 7. The number 7: inner knowing, spiritual vision, the examination of what is true beneath what appears. A 7 week asks for depth, not performance. This is a week for internal work, not external display — appropriate for a Solstice Full Moon that reveals what has been hidden.", "tag": "Week · 7" }
   ],
   "tarot": [
-    { "card": "The Lovers", "number": "VI", "sign": "Gemini", "emoji": "⚖️", "role": "Season Card", "meaning": "The card of Gemini. Not romance — choice. The moment of discernment between two paths, two voices, two selves. This is Gemini Season's core teaching." },
-    { "card": "The Magician", "number": "I", "planet": "Mercury", "emoji": "🪄", "role": "Mercury / Primary", "meaning": "The Magician holds all four tools and knows how to use them. As Mercury moves from body-wisdom into speech, the tools become words. Speak with precision." },
-    { "card": "7 of Pentacles", "number": "VII", "planet": "Saturn in Taurus", "emoji": "🌾", "role": "Decan / Week", "meaning": "The farmer looking at what grew — not in despair, but in honest evaluation. Before you speak what you've learned, you have to honestly see it." }
+    { "title": "The Chariot (VII) — Cancer's Major Arcana", "body": "The Chariot governs Cancer. A figure in armor — soft inside, armored outside — commanding two sphinxes pulling in opposite directions. The Chariot does not force the sphinxes to agree. It holds the tension between them and moves forward anyway. This week: what two opposing forces are you holding? The skill is not resolution. The skill is direction.", "tag": "Major Arcana" },
+    { "title": "The Moon (XVIII) — Full Moon week", "body": "The Moon card rises with the Full Moon — the card of the unconscious, dreams, the things that surface from the depths that we didn't know were there. The Full Moon in Capricorn and the Moon card in Tarot share one message: what is shown in the night sky is what is true. Not comfortable. True.", "tag": "Full Moon" },
+    { "title": "4 of Cups — Cancer Decan I (Sun this week)", "body": "The 4 of Cups: a figure sits under a tree, arms crossed, uninterested in three cups before them — a fourth appears from a cloud. Luxury becoming ennui. The gift unnoticed because the heart is elsewhere. Cancer Decan I asks: are you recognizing what is being offered to you? The fourth cup is already appearing.", "tag": "Minor Arcana" }
   ],
-  "politicalMirror": [
-    {
-      "headline": "AI and language model governance becomes primary legislative battleground globally",
-      "skyReading": "Uranus in Gemini — the revolution in language, media, and how information is received is at its first degree. Every regulatory discussion about AI is a discussion about who controls the word.",
-      "historicalParallel": "Uranus last in Gemini: 1942–1949 — the invention of modern telecommunications, the first computers, the birth of mass broadcast media. We are at the beginning of the next revolution of that magnitude.",
-      "source": "Pattern analysis · Uranus-Gemini cycle"
-    },
-    {
-      "headline": "Russia-Ukraine ceasefire enters third week; peace terms remain unresolved",
-      "skyReading": "Mercury in Taurus III / Saturn-Neptune in Aries — slow, body-weight negotiations of a peace neither side can fully believe. Saturn says: structure it or it dissolves. Neptune says: every word contains what is unsaid.",
-      "historicalParallel": "Armistice negotiations after World War I: words that ended fighting but structured the next war. The treaty is only as good as the consciousness of those who write it.",
-      "source": "Pattern analysis · ongoing"
-    },
-    {
-      "headline": "Climate displacement accelerates: unprecedented migration from South Asia and Sub-Saharan Africa",
-      "skyReading": "Jupiter in Cancer (home, migration, the ancestral land) — the deep ocean of displacement is connected to where we are meant to be going together. The Great Migration is a cosmological event.",
-      "historicalParallel": "The Partition of India, 1947 (last Jupiter in Cancer cycle) — the largest forced migration in human history. This cycle calls us to do it differently.",
-      "source": "Pattern analysis · Jupiter in Cancer cycle"
-    }
-  ],
-  "sacredCalendar": [
-    { "name": "Malcolm X's Birthday", "date": "May 19, 1925", "tradition": "African American / Political-Spiritual", "note": "El-Hajj Malik El-Shabazz. A man who remade his own name, his own language, his own cosmology in real time. The Gemini threshold holds his memory." },
-    { "name": "Gemini Season Begins", "date": "May 20, 2026", "tradition": "Solar / Western Astrological", "note": "Sun enters Gemini at approximately 3:37 AM EDT. The season of language, duality, and perception. What you name this season is what you make real." },
-    { "name": "Beltane Season Closes", "date": "May 21", "tradition": "Celtic / Cross-Quarter", "note": "The creative fertility impulse now channels into form — the work of summer. The fire of Beltane becomes the speech of Gemini." },
-    { "name": "First Quarter Moon", "date": "May 23, 2026", "tradition": "Universal / Lunar Calendar", "note": "The moon at ninety degrees from the sun. Tension becomes productive. Build now." },
-    { "name": "Full Flower Moon", "date": "May 31, 2026", "tradition": "Algonquin / Ojibwe / Farmers' Almanac", "note": "Sagittarius Full Moon. The truth revealed at peak bloom. What have you been growing toward all spring?" }
-  ],
-  "voiceMemo": {
-    "title": "The Tongue of the World",
-    "subtitle": "On Gemini Season, Uranus in Gemini, and the Language We Are Being Asked to Speak",
-    "recordingDate": "Week of May 18, 2026",
-    "estimatedLength": "20–35 minutes",
-    "url": "",
-    "transcript": ""
-  },
-  "closing": "Gemini Season. The body has spoken through the earth all spring. Now it learns to speak through the air. What is the word for what you've been growing?",
-  "sources": [
-    "AstroLibrary · astrolibrary.org/current-planets",
-    "Astro-Seek · astro-seek.com",
-    "CafeAstrology · cafeastrology.com/2026-astrological-aspects.html",
-    "James Burgess · jamesburgess.com (Sabian Symbols)",
-    "Dane Rudhyar · An Astrological Mandala (1973)",
-    "Austin Coppock · 36 Faces (2014)",
-    "T. Susan Chang · 36 Secrets (2021)",
-    "Picatrix (10th century CE)",
-    "Agrippa · Three Books of Occult Philosophy (1531)",
-    "Rachel Pollack · Seventy-Eight Degrees of Wisdom (1980)",
-    "Matthew Wood · The Book of Herbal Wisdom",
-    "Maud Grieve · A Modern Herbal (1931)",
-    "Farmers' Almanac · farmersalmanac.com",
-    "Culpeper · Complete Herbal (1653)"
-  ]
+  "moonNote": "The Solstice Full Moon in Capricorn — June 21, 2026 — is one of the most charged lunations of the year. The Full Moon at the exact moment of the Sun's Cancer ingress means maximum light and maximum turn simultaneously. What is fully illuminated at the Solstice point is what you carry into the emotional season ahead.",
+  "decanNotes": {
+    "sun": "The Sun in Gemini III (if before June 21) or Cancer I (after June 21). The pivot of the year lives in this decan transition — the mind becoming the heart.",
+    "moon": "The Moon's decan changes daily this week as it moves toward the Full Moon in Capricorn. Track where it lands in your chart.",
+    "mercury": "Mercury in Gemini I–II: the messenger at home, at speed, in full native intelligence. The tongue knows what it's doing.",
+    "venus": "Venus in Cancer I: the planet of love in the Moon-ruled decan. Nourishment, home, the body's need for care.",
+    "mars": "Mars in Taurus I–II: the warrior in the body's sign. Slow, material, building something real.",
+    "jupiter": "Jupiter in Cancer II: the great benefic in the Mercury-ruled decan of Cancer. Abundance through intelligent emotional navigation.",
+    "saturn": "Saturn in Aries I–II: structure at the beginning of things. The form is still being determined.",
+    "uranus": "Uranus in Gemini I: the revolutionary just entered the sign of language. Earliest possible placement — the disruption is brand new.",
+    "neptune": "Neptune in Aries I: the dream at the beginning. Vision that has barely been born into form.",
+    "pluto": "Pluto retrograde in Aquarius I: the transformation of collective systems turning inward. The interior revolution."
+  }
 }
