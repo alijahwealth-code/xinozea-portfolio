@@ -4141,66 +4141,67 @@ function getPlanetPositions(date) {
   var A = Astronomy;
   var result = {};
 
-  function calc(key, body) {
+  // Map key → Body enum value
+  var BODIES = {
+    sun:     A.Body.Sun,
+    moon:    A.Body.Moon,
+    mercury: A.Body.Mercury,
+    venus:   A.Body.Venus,
+    mars:    A.Body.Mars,
+    jupiter: A.Body.Jupiter,
+    saturn:  A.Body.Saturn,
+    uranus:  A.Body.Uranus,
+    neptune: A.Body.Neptune,
+    pluto:   A.Body.Pluto
+  };
+
+  var yesterday = new Date(date.getTime() - 86400000);
+
+  Object.keys(BODIES).forEach(function(key) {
     try {
-      var eq = A.GeoVector(body, date, false);
-      var ecl = A.Ecliptic(eq);
-      var lon = ((ecl.elon % 360) + 360) % 360;
+      var body = BODIES[key];
+      // EclipticLongitude returns ecliptic longitude in degrees [0,360)
+      var lon = A.EclipticLongitude(body, date);
+      lon = ((lon % 360) + 360) % 360;
+
+      var lonYest = A.EclipticLongitude(body, yesterday);
+      lonYest = ((lonYest % 360) + 360) % 360;
+      var motion = lon - lonYest;
+      if (motion > 180) motion -= 360;
+      if (motion < -180) motion += 360;
+      var retro = (key !== 'sun' && key !== 'moon') && motion < 0;
+
       var signIndex = Math.floor(lon / 30);
       var degInSign = lon % 30;
       var deg = Math.floor(degInSign);
       var min = Math.floor((degInSign - deg) * 60);
+
       result[key] = {
         lon: lon,
         sign: SIGNS[signIndex],
         signIndex: signIndex,
         degree: deg + '°' + (min < 10 ? '0' : '') + min + "'",
         sabian: getSabian(lon),
-        retrograde: false
+        retrograde: retro
       };
-    } catch(e) {}
-  }
-
-  // Retrograde: compare with position 1 day ago
-  function checkRetro(key, body) {
-    try {
-      var yesterday = new Date(date.getTime() - 86400000);
-      var eq1 = A.GeoVector(body, date, false);
-      var eq0 = A.GeoVector(body, yesterday, false);
-      var ecl1 = A.Ecliptic(eq1).elon;
-      var ecl0 = A.Ecliptic(eq0).elon;
-      var motion = ecl1 - ecl0;
-      if (motion > 180) motion -= 360;
-      if (motion < -180) motion += 360;
-      if (result[key]) result[key].retrograde = motion < 0;
-    } catch(e) {}
-  }
-
-  var bodies = {
-    sun: 'Sun', moon: 'Moon', mercury: 'Mercury', venus: 'Venus',
-    mars: 'Mars', jupiter: 'Jupiter', saturn: 'Saturn',
-    uranus: 'Uranus', neptune: 'Neptune', pluto: 'Pluto'
-  };
-
-  Object.entries(bodies).forEach(function(e) { calc(e[0], e[1]); });
-  ['mercury','venus','mars','jupiter','saturn','uranus','neptune','pluto'].forEach(function(k) {
-    checkRetro(k, bodies[k]);
+    } catch(e) { console.warn('Planet error', key, e); }
   });
 
   return result;
 }
 
 function getMoonPhase(date) {
-  if (typeof Astronomy === 'undefined') return { name: '—', illumination: 0 };
+  if (typeof Astronomy === 'undefined') return { name: '—', illumination: 0, angle: 0 };
   try {
     var A = Astronomy;
     var angle = A.MoonPhase(date);
-    var illum = A.Illumination('Moon', date);
+    var illum = A.Illumination(A.Body.Moon, date);
     var names = ['New Moon','Waxing Crescent','First Quarter','Waxing Gibbous','Full Moon','Waning Gibbous','Last Quarter','Waning Crescent'];
     var idx = Math.round(angle / 45) % 8;
-    return { name: names[idx], illumination: Math.round(illum.phase_fraction * 100), angle: angle };
+    var phaseFrac = illum ? (illum.phase_fraction || illum.mag || 0) : 0;
+    return { name: names[idx], illumination: Math.round(phaseFrac * 100), angle: angle };
   } catch(e) {
-    return { name: '—', illumination: 0 };
+    return { name: '—', illumination: 0, angle: 0 };
   }
 }
 
